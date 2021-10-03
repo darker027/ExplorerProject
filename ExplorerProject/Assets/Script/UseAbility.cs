@@ -5,7 +5,7 @@ using UnityEngine;
 public class UseAbility : MonoBehaviour
 {
       //bullet
-    private Element.currentElement currElement;
+    public Element.currentElement currElement;
     public GameObject ability;
 
     //bullet force
@@ -42,6 +42,7 @@ public class UseAbility : MonoBehaviour
         {
             case Element.currentElement.Fire:
                 {
+                    
                     break;
                 }
             case Element.currentElement.Ice:

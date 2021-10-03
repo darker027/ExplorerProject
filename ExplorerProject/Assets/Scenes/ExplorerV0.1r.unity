@@ -887,7 +887,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.82855797, b: 0.4764151, a: 1}
+  m_Color: {r: 0.6698113, g: 0.5997748, b: 0.22432362, a: 1}
   m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
@@ -3590,6 +3590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6fd8742a1379f4189da129df84ec26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currElement: 0
   ability: {fileID: 1236713699}
   shootForce: 300
   upwardForce: 0
