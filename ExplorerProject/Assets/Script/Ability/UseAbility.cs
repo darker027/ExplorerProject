@@ -6,7 +6,10 @@ public class UseAbility : MonoBehaviour
 {
       //bullet
     public Element.currentElement currElement;
-    public GameObject ability;
+    private GameObject ability;
+    public GameObject fire;
+    public GameObject ice;
+    
 
     //bullet force
     [SerializeField] private float shootForce,upwardForce;
@@ -42,11 +45,12 @@ public class UseAbility : MonoBehaviour
         {
             case Element.currentElement.Fire:
                 {
-                    
+                    ability = fire;
                     break;
                 }
             case Element.currentElement.Ice:
                 {
+                    ability = ice;
                     break;
                 }
             case Element.currentElement.Wind:
@@ -86,6 +90,15 @@ public class UseAbility : MonoBehaviour
         if(readyToShoot && shooting && !reloading && bulletLeft > 0)
         {
             Shoot();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) && currElement != Element.currentElement.Fire)
+        {
+            currElement = Element.currentElement.Fire;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2) && currElement != Element.currentElement.Ice)
+        {
+            currElement = Element.currentElement.Ice;
         }
     }
     private void Shoot()
