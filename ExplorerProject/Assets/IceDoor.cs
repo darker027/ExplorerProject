@@ -34,7 +34,6 @@ public class IceDoor : MonoBehaviour
 
         if (moveAble == true)
         {
-            Debug.Log(opening);
             if (opening == false)
             {
                 if (this.transform.position.x < maximumOpening)
