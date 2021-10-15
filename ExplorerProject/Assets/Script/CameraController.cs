@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     private static CameraController _instance;
     public static CameraController Instance { get { return _instance; } }
 
-    public Transform targetObj;
+    public Transform followObject;
     public LayerMask aimMask;
 
     [HideInInspector] public Vector3 aimLocation;
@@ -22,19 +22,23 @@ public class CameraController : MonoBehaviour
     [HideInInspector] public bool InvertY = false;
 
     [HideInInspector] public float cameraDistance = 2f;
-    float x = 0f;
-    float y = 0f;
+    float xAxis = 0f;
+    float yAxis = 0f;
 
-    float rotX;
-    float rotY;
+    float rotateX;
+    float rotateY;
+
+    private float wallDistance;
 
     public Vector3 anchorOffset;
     public Vector3 cameraOffset;
+    private Vector3 Offset;
+    private Vector3 updateOffset;
 
     public float cameraSmoothing = 0.125f;
     public float rotationSmoothing = 3f;
 
-    Camera cam;
+    Camera mainCamera;
 
     Vector3 refVector = Vector3.zero;
 
@@ -52,38 +56,65 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        cam = GetComponentInChildren<Camera>();
+        mainCamera = gameObject.GetComponentInChildren<Camera>();
         Cursor.lockState = CursorLockMode.Locked;
+        updateOffset = cameraOffset;
     }
 
 
     void Update()
     {
-        if (targetObj == null)
+        if (followObject == null)
             return;
 
-        x += Input.GetAxis("Mouse X") * xSpeed;
-        y -= Input.GetAxis("Mouse Y") * ySpeed;
+        xAxis += Input.GetAxis("Mouse X") * xSpeed;
+        yAxis -= Input.GetAxis("Mouse Y") * ySpeed;
 
-        y = Mathf.Clamp(y, yMin, yMax);
+        yAxis = Mathf.Clamp(yAxis, yMin, yMax);
 
-        rotX = Mathf.Lerp(rotX, x, Time.deltaTime * rotationSmoothing);
-        rotY = Mathf.Lerp(rotY, y, Time.deltaTime * rotationSmoothing);
+        rotateX = Mathf.Lerp(rotateX, xAxis, Time.deltaTime * rotationSmoothing);
+        rotateY = Mathf.Lerp(rotateY, yAxis, Time.deltaTime * rotationSmoothing);
 
-        Quaternion rotation = Quaternion.Euler(y, x, 0);
+        Quaternion rotation = Quaternion.Euler(yAxis, xAxis, 0);
         transform.rotation = rotation;
 
-        transform.position = Vector3.SmoothDamp(transform.position, targetObj.position + anchorOffset, ref refVector, cameraSmoothing);
+        transform.position = Vector3.SmoothDamp(transform.position, followObject.position + anchorOffset, ref refVector, cameraSmoothing);
 
-        cam.transform.localPosition = cameraOffset;
+        // mainCamera.transform.localPosition = cameraOffset;
 
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, aimDistance, aimMask))
+        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out RaycastHit hit, aimDistance, aimMask))
         {
             aimLocation = hit.point;
         }
         else
         {
-            aimLocation = cam.transform.forward * aimDistance;
+            aimLocation = mainCamera.transform.forward * aimDistance;
         }
+
+        if (Physics.Raycast(mainCamera.transform.position, -this.gameObject.transform.forward, out RaycastHit backRayHit))
+        {
+            wallDistance = Vector3.Distance(mainCamera.transform.position, backRayHit.point);
+
+            if (wallDistance < 1 && updateOffset.z < -1)
+            {
+                updateOffset.z += 10 * Time.deltaTime;
+            }
+            else if (updateOffset.z >= -1)
+            {
+                updateOffset.z = -1;
+            }
+
+            if (wallDistance > 1 && updateOffset.z > -5)
+            {
+                updateOffset.z -= 10 * Time.deltaTime;
+            }
+            else if (updateOffset.z <= -5)
+            {
+                updateOffset.z = -5;
+            }
+        }
+
+        mainCamera.transform.localPosition = updateOffset;
+
     }
 }
