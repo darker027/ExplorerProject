@@ -557,6 +557,7 @@ GameObject:
   m_Component:
   - component: {fileID: 62047113}
   - component: {fileID: 62047116}
+  - component: {fileID: 62047115}
   - component: {fileID: 62047114}
   m_Layer: 0
   m_Name: Cube (1)
