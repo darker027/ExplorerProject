@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class IceDoor : MonoBehaviour
 {
-    [SerializeField] private float maximumOpening = 10f;
-    [SerializeField] private float maximumClosing = 0f;
+
+    [SerializeField] private Transform maxOpen;
+    [SerializeField] private Transform minOpen;
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private float Timer = 5f;
     bool moveAble;
@@ -33,13 +34,13 @@ public class IceDoor : MonoBehaviour
         }
 
         if (moveAble == true)
-        {
+        {   
             if (opening == false)
             {
-                if (this.transform.position.x < maximumOpening)
+                if (this.transform.position.x < maxOpen.position.x)
                 {
                     this.transform.Translate(movementSpeed * Time.deltaTime, 0f, 0f);
-                    if (this.transform.position.x >= maximumOpening)
+                    if (this.transform.position.x >= maxOpen.position.x)
                     {
                         opening = true;
                     }
@@ -49,11 +50,11 @@ public class IceDoor : MonoBehaviour
             {
                 if (opening == true)
                 {
-                    if (this.transform.position.x > maximumClosing)
+                    if (this.transform.position.x > minOpen.position.x)
                     {
                         this.transform.Translate(-movementSpeed * Time.deltaTime, 0f, 0f);
                     }
-                    if (this.transform.position.x <= maximumClosing)
+                    if (this.transform.position.x <= minOpen.position.x)
                     {
                         opening = false;
                     }
@@ -64,11 +65,11 @@ public class IceDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Ice"))
+       /* if (other.gameObject.CompareTag("Ice"))
         {
             Timer = 5.0f;
             moveAble = false;
-        }
+        }*/
     }
 
   
