@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class icefountain : MonoBehaviour
 {
+    [SerializeField] private Material Water;
+    [SerializeField] private Material Ice;
     [SerializeField] private Collider boxCollider;
     [SerializeField] private float Timer = 5f;
     private bool isFreeze;
@@ -26,6 +28,7 @@ public class icefountain : MonoBehaviour
             {
                 isFreeze = false;
                 boxCollider.enabled = !boxCollider.enabled;
+                gameObject.GetComponent<Renderer>().material = Water;
             }
         }
 
@@ -37,6 +40,7 @@ public class icefountain : MonoBehaviour
             Timer = 5.0f;
             isFreeze = true;
             boxCollider.enabled = !boxCollider.enabled;
+            gameObject.GetComponent<Renderer>().material = Ice;
         }
       
     }
