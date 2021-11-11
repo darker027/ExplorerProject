@@ -19,17 +19,6 @@ public class IceAbility : Ability
     {
         base.OnTriggerEnter(collision);
 
-        if (collision.gameObject.CompareTag("FireDoor"))
-        {
-            destroyBullet();
-        }
-        if (collision.gameObject.CompareTag("FireLight"))
-        {
-            destroyBullet();
-        }
-        if (collision.gameObject.CompareTag("IceDoor"))
-        {
-            destroyBullet();
-        }
+       
     }
 }

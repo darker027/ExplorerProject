@@ -22,6 +22,18 @@ public class Ability : MonoBehaviour
         {
             destroyBullet();
         }
+        if (collision.gameObject.CompareTag("FireDoor"))
+        {
+            destroyBullet();
+        }
+        if (collision.gameObject.CompareTag("FireLight"))
+        {
+            destroyBullet();
+        }
+        if (collision.gameObject.CompareTag("IceDoor"))
+        {
+            destroyBullet();
+        }
     }
     protected virtual void Initializiation()
     {

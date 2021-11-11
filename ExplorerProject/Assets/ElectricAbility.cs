@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireAbility : Ability
+public class ElectricAbility : Ability
 {
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,6 @@ public class FireAbility : Ability
     public override void OnTriggerEnter(Collider collision)
     {
         base.OnTriggerEnter(collision);
-       
-    }
 
+    }
 }

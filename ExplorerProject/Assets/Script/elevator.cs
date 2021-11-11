@@ -22,7 +22,6 @@ public class elevator : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(opening);
         if (IceLever.isOn == true)
         {
             if (opening == false)

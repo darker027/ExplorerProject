@@ -8,6 +8,6 @@ public class Element : MonoBehaviour
     {
         Fire,
         Ice,
-        Wind
+        Electro
     }
 }

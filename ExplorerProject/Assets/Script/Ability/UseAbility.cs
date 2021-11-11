@@ -9,6 +9,7 @@ public class UseAbility : MonoBehaviour
     private GameObject ability;
     public GameObject fire;
     public GameObject ice;
+    public GameObject electric;
     
 
     //bullet force
@@ -19,9 +20,12 @@ public class UseAbility : MonoBehaviour
 
     [SerializeField] private int bulletPerTap,magazineSize;
 
+    [SerializeField]private float  bulletMaximumSize;
+    private float bulletSize;
+
     int bulletLeft, bulletShot;
     //bool
-    private bool allowButtonHold,allowInvoke;
+    private bool allowButtonHold,allowInvoke,isCharging;
 
     private bool shooting, readyToShoot,reloading;
 
@@ -36,6 +40,9 @@ public class UseAbility : MonoBehaviour
         //make sure bullet is full
         bulletLeft = magazineSize;
         readyToShoot = true;
+        allowButtonHold = false;
+        bulletSize = 0.0f;
+    
     }
 
     // Update is called once per frame
@@ -46,15 +53,20 @@ public class UseAbility : MonoBehaviour
             case Element.currentElement.Fire:
                 {
                     ability = fire;
+                    allowButtonHold = false;
                     break;
                 }
             case Element.currentElement.Ice:
                 {
                     ability = ice;
+                    allowButtonHold = false;
                     break;
                 }
-            case Element.currentElement.Wind:
+            case Element.currentElement.Electro:
                 {
+                    ability = electric;
+                    allowButtonHold = true;
+
                     break;
                 }
 
@@ -68,7 +80,22 @@ public class UseAbility : MonoBehaviour
         //check if allowed to hold down button
         if (allowButtonHold)
         {
-            shooting = Input.GetKey(KeyCode.Mouse0);
+           
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                if(bulletSize <= bulletMaximumSize)
+                {
+
+                    bulletSize += 5 * Time.deltaTime;
+                    Debug.Log(bulletSize);
+                }
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                shooting = true;
+
+            }
+            
         }
         else
         {
@@ -100,6 +127,10 @@ public class UseAbility : MonoBehaviour
         {
             currElement = Element.currentElement.Ice;
         }
+        if (Input.GetKeyDown(KeyCode.Alpha3) && currElement != Element.currentElement.Electro)
+        {
+            currElement = Element.currentElement.Electro;
+        }
     }
     private void Shoot()
     {
@@ -125,14 +156,33 @@ public class UseAbility : MonoBehaviour
         //calculate direction from attackpoint to targetPoint
         Vector3 directionWithoutSpread = targetPoint - attackPoint.position;
 
-        GameObject currentBullet = Instantiate(ability, attackPoint.position, Quaternion.identity);
+        
 
 
-        //rotate bullet to shoot direction
-        currentBullet.transform.forward = directionWithoutSpread.normalized;
+        if (currElement != Element.currentElement.Electro)
+        {
+            GameObject currentBullet = Instantiate(ability, attackPoint.position, Quaternion.identity);
+            //rotate bullet to shoot direction
+            currentBullet.transform.forward = directionWithoutSpread.normalized;
 
-        //addforce to bullet
-        currentBullet.GetComponent<Rigidbody>().AddForce(directionWithoutSpread.normalized * shootForce, ForceMode.Impulse);
+            //addforce to bullet
+            currentBullet.GetComponent<Rigidbody>().AddForce(directionWithoutSpread.normalized * shootForce, ForceMode.Impulse);
+        }
+        else
+        {
+           
+            GameObject currentBullet = Instantiate(ability, attackPoint.position, Quaternion.identity);
+            currentBullet.transform.localScale = new Vector3(currentBullet.transform.localScale.x * bulletSize, currentBullet.transform.localScale.y * bulletSize, currentBullet.transform.localScale.z * bulletSize);
+            
+            
+            //rotate bullet to shoot direction
+            currentBullet.transform.forward = directionWithoutSpread.normalized;
+
+            //addforce to bullet
+            currentBullet.GetComponent<Rigidbody>().AddForce(directionWithoutSpread.normalized * shootForce, ForceMode.Impulse);
+            bulletSize = 0.0f;
+            shooting = false;
+        }
 
         bulletLeft--;
         bulletShot++;

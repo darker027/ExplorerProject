@@ -784,12 +784,14 @@ MonoBehaviour:
   currElement: 0
   fire: {fileID: 2598963876853130042, guid: ec5f38dd94a178f46ba802ceb302de14, type: 3}
   ice: {fileID: 7946987778533173572, guid: 623e5131d935a184fae707b02cf702e3, type: 3}
+  electric: {fileID: 6633822998010869426, guid: b5c40cfd6e64d7142b4ca319f437ee9a, type: 3}
   shootForce: 100
   upwardForce: 0
   timeBetweenShots: 0.1
   reloadTime: 1.5
   bulletPerTap: 1
   magazineSize: 100
+  bulletMaximumSize: 5
   ThirdPersonCam: {fileID: 389784235}
   attackPoint: {fileID: 795852981}
 --- !u!65 &475886402
