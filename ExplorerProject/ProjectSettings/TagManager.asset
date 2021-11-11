@@ -11,6 +11,7 @@ TagManager:
   - Wall
   - Ice
   - IceDoor
+  - Platform
   layers:
   - Default
   - TransparentFX
