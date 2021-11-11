@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Object Reference")]
-    [SerializeField] public Transform CameraBase;
+    [SerializeField] private LayerMask GroundMask;
+    [SerializeField] private Transform CameraBase;
+    [SerializeField] private Transform PlayerFeet;
 
     private Rigidbody playerRigid;
 
@@ -16,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 Direction;
     private Vector3 Movement;
 
-    private bool onGrounded;
+    [SerializeField]private bool onGrounded;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(onGrounded)
+            if(Physics.CheckSphere(PlayerFeet.position, 0.1f, GroundMask))
             {
                 playerRigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
