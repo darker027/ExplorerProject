@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2500997558029856826}
   m_Layer: 0
   m_Name: Electric
-  m_TagString: Ice
+  m_TagString: Electric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
