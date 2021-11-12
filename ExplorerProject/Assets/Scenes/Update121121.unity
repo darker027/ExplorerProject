@@ -282,7 +282,7 @@ MonoBehaviour:
   reloadTime: 1.5
   bulletPerTap: 1
   magazineSize: 100
-  bulletMaximumSize: 0
+  bulletMaximumSize: 5
   ThirdPersonCam: {fileID: 1325781124}
   attackPoint: {fileID: 582918610}
 --- !u!1 &71559321
