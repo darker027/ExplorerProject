@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ElectricAbility : Ability
 {
+    public float electricValue;
     // Start is called before the first frame update
     void Start()
     {
-        
+        electricValue = 0;
     }
 
     // Update is called once per frame
@@ -19,5 +20,13 @@ public class ElectricAbility : Ability
     {
         base.OnTriggerEnter(collision);
 
+    }
+    public void setValue(float value)
+    {
+        electricValue = value;
+    }
+    public float getValue()
+    {
+        return electricValue;
     }
 }

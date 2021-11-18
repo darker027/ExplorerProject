@@ -173,8 +173,7 @@ public class UseAbility : MonoBehaviour
            
             GameObject currentBullet = Instantiate(ability, attackPoint.position, Quaternion.identity);
             currentBullet.transform.localScale = new Vector3(currentBullet.transform.localScale.x * bulletSize, currentBullet.transform.localScale.y * bulletSize, currentBullet.transform.localScale.z * bulletSize);
-            
-            
+            currentBullet.GetComponent<ElectricAbility>().setValue(bulletSize);
             //rotate bullet to shoot direction
             currentBullet.transform.forward = directionWithoutSpread.normalized;
 
