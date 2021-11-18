@@ -5113,7 +5113,7 @@ GameObject:
   - component: {fileID: 1681188554}
   m_Layer: 6
   m_Name: WoodPlank
-  m_TagString: Untagged
+  m_TagString: IceDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5217,10 +5217,10 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_Limits:
-    min: -103.93364
-    max: 105.30459
+    min: -30
+    max: 30
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
