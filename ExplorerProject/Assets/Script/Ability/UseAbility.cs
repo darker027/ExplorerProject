@@ -87,7 +87,6 @@ public class UseAbility : MonoBehaviour
                 {
 
                     bulletSize += 5 * Time.deltaTime;
-                    Debug.Log(bulletSize);
                 }
             }
             if (Input.GetMouseButtonUp(0))
@@ -173,7 +172,8 @@ public class UseAbility : MonoBehaviour
            
             GameObject currentBullet = Instantiate(ability, attackPoint.position, Quaternion.identity);
             currentBullet.transform.localScale = new Vector3(currentBullet.transform.localScale.x * bulletSize, currentBullet.transform.localScale.y * bulletSize, currentBullet.transform.localScale.z * bulletSize);
-            currentBullet.GetComponent<ElectricAbility>().setValue(bulletSize);
+            currentBullet.GetComponent<ElectricAbility>().electric = bulletSize;
+            
             //rotate bullet to shoot direction
             currentBullet.transform.forward = directionWithoutSpread.normalized;
 

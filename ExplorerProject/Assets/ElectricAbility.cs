@@ -4,29 +4,34 @@ using UnityEngine;
 
 public class ElectricAbility : Ability
 {
-    public float electricValue;
+    public float electric;
     // Start is called before the first frame update
     void Start()
     {
-        electricValue = 0;
+        //electric = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(electric);
     }
     public override void OnTriggerEnter(Collider collision)
     {
         base.OnTriggerEnter(collision);
+        if (collision.gameObject.CompareTag("ElectricSwitch"))
+        {
+            collision.GetComponent<batterySwitch>().setValue(electric);
+            destroyBullet();
+        }
 
     }
     public void setValue(float value)
     {
-        electricValue = value;
+        electric = value;
     }
     public float getValue()
     {
-        return electricValue;
+        return electric;
     }
 }

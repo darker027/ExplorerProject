@@ -12,6 +12,8 @@ TagManager:
   - Ice
   - IceDoor
   - Platform
+  - Electric
+  - ElectricSwitch
   layers:
   - Default
   - TransparentFX
