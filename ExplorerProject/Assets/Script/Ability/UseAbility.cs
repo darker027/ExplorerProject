@@ -83,17 +83,15 @@ public class UseAbility : MonoBehaviour
         {
             if (pickableController.IsHolding == false)
             {
-                if (pickableController.Pickup())
-                {
-                    pickableController.Pickup();
-                }
+                
+              pickableController.Pickup();
+                
             }
             else
             {
-                if (pickableController.PutDown())
-                {
+               
                     pickableController.PutDown();
-                }
+             
             }
 
         }

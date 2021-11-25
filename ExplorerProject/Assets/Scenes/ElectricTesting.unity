@@ -1175,6 +1175,7 @@ MonoBehaviour:
   electric: {fileID: 6633822998010869426, guid: b5c40cfd6e64d7142b4ca319f437ee9a, type: 3}
   shootForce: 50
   upwardForce: 0
+  pickableController: {fileID: 292122534}
   timeBetweenShots: 0.25
   reloadTime: 1.5
   bulletPerTap: 1
