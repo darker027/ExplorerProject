@@ -14,6 +14,7 @@ public class UseAbility : MonoBehaviour
 
     //bullet force
     [SerializeField] private float shootForce,upwardForce;
+    [SerializeField] private PickableController pickableController;
     
     //element stat
     [SerializeField] private float timeBetweenShots, reloadTime;
@@ -77,6 +78,25 @@ public class UseAbility : MonoBehaviour
     }
     private void myInput()
     {
+        //pick up
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            if (pickableController.IsHolding == false)
+            {
+                if (pickableController.Pickup())
+                {
+                    pickableController.Pickup();
+                }
+            }
+            else
+            {
+                if (pickableController.PutDown())
+                {
+                    pickableController.PutDown();
+                }
+            }
+
+        }
         //check if allowed to hold down button
         if (allowButtonHold)
         {
