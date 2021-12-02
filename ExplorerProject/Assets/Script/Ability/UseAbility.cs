@@ -229,5 +229,10 @@ public class UseAbility : MonoBehaviour
         bulletLeft = magazineSize;
         reloading = false;
     }
+    // implement later after add animation
+    public void isDead()
+    {
+
+    }
 
 }
