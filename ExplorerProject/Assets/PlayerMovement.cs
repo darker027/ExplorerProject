@@ -20,6 +20,11 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]private bool onGrounded;
 
+    [Header("Debugging")]
+    [SerializeField] private float Xvelocity;
+    [SerializeField] private float Yvelocity;
+    [SerializeField] private float Zvelocity;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +55,9 @@ public class PlayerMovement : MonoBehaviour
         Movement = transform.TransformDirection(Direction) * moveSpeed;
 
         playerRigid.velocity = new Vector3(Movement.x, playerRigid.velocity.y, Movement.z);
+        Xvelocity = playerRigid.velocity.x;
+        Yvelocity = playerRigid.velocity.y;
+        Zvelocity = playerRigid.velocity.z;
     }
 
     private void OnCollisionEnter(Collision Enter)
