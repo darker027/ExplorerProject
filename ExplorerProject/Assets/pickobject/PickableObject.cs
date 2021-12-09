@@ -44,10 +44,15 @@ public class PickableObject : MonoBehaviour, IPickable
         PickableManager.Instance.Register(this);
     }
     private void OnDestroy() => PickableManager.Instance.Unregister(this);
-
+    private void Update()
+    {
+       
+    }
     public IPickable Pickup(Transform holderTransform)
     {
         if (_isBeingPickup) return null;
+        Debug.Log(Vector3.Distance(_pickableOffset.position, holderTransform.position));
+        Debug.Log(_pickableDistance);
         if (Vector3.Distance(_pickableOffset.position, holderTransform.position) > _pickableDistance) return null;
         _isBeingPickup = true;
         this.transform.GetComponent<Rigidbody>().isKinematic = true; // Not sure if we will animate object to floating, or using physic.
@@ -56,7 +61,7 @@ public class PickableObject : MonoBehaviour, IPickable
         return this;
     }
 
-    public IPickable Putdown()
+    public IPickable Putdown() 
     {
         if (_isBeingPickup == false) return this;
         _isBeingPickup = false;

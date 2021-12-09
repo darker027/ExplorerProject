@@ -4135,7 +4135,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh92272
+  m_Name: pb_Mesh30196
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6209,7 +6209,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91640
+  m_Name: pb_Mesh29544
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7722,7 +7722,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh92228
+  m_Name: pb_Mesh30150
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9157,7 +9157,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh92486
+  m_Name: pb_Mesh30420
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14241,6 +14241,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5005148957060438666, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
+      propertyPath: _rootTransform
+      value: 
+      objectReference: {fileID: 1949803333}
     - target: {fileID: 5005148957060438668, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
       propertyPath: jumpForce
       value: 75
@@ -14257,6 +14261,10 @@ PrefabInstance:
       propertyPath: ThirdPersonCam
       value: 
       objectReference: {fileID: 445364806}
+    - target: {fileID: 5005148957410178336, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
 --- !u!4 &1787836959 stripped
@@ -15263,7 +15271,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh92000
+  m_Name: pb_Mesh29918
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15427,7 +15435,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh92180
+  m_Name: pb_Mesh30102
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15697,7 +15705,7 @@ MonoBehaviour:
   _rootTransform: {fileID: 1949803333}
   _pickableOffset: {fileID: 1787836961}
   _holdingOffset: {fileID: 1787836960}
-  _pickableDistance: 3
+  _pickableDistance: 2
   _isBeingPickup: 0
   _holderTransform: {fileID: 0}
 --- !u!54 &1949803335
