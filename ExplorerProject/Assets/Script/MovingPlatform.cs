@@ -94,6 +94,10 @@ public class MovingPlatform : MonoBehaviour
         {
             trigEnter.gameObject.transform.parent = this.transform;
         }
+        if (trigEnter.gameObject.CompareTag("Ice"))
+        {
+            FreezePlatform();
+        }
     }
 
     private void OnTriggerExit(Collider trigExit)
