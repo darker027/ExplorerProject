@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1311836680358246161}
   - component: {fileID: 1311836680358246160}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DeepCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 1311836680427916533}
   - component: {fileID: 1311836680427916530}
   - component: {fileID: 1311836680427916531}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DeepSea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ Transform:
   m_GameObject: {fileID: 1311836680427916528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 2.25, z: 5}
+  m_LocalScale: {x: 5, y: 2, z: 5}
   m_Children:
   - {fileID: 1311836680358246161}
   m_Father: {fileID: 0}

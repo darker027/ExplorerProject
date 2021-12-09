@@ -15,7 +15,7 @@ public class DeepPuddle : MonoBehaviour
     {
         gameObject.GetComponent<Renderer>().material = UnFreeze;
         IsFreeze = false;
-        scenename = "ElectricTesting";
+        scenename = "Prototype_01";
     }
 
     // Update is called once per frame
