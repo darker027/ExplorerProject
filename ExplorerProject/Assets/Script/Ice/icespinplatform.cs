@@ -29,7 +29,7 @@ public class icespinplatform : MonoBehaviour
         }
         if (isFreeze == false)
         {
-            this.transform.Rotate(rotateSpeed * Time.deltaTime, 0f, 0f);
+            this.transform.Rotate(0f, rotateSpeed * Time.deltaTime, 0f);
         }
     }
     private void OnTriggerEnter(Collider other)
