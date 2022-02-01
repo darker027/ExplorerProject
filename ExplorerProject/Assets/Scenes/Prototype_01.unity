@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 29270656}
   - component: {fileID: 29270655}
   - component: {fileID: 29270654}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1803,6 +1803,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (25)
@@ -2169,6 +2173,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (20)
@@ -2331,7 +2339,7 @@ MonoBehaviour:
   WayPoints:
   - {fileID: 1376847423}
   - {fileID: 49356610}
-  moveSpeed: 0.05
+  moveSpeed: 0.025
   Freezing: {fileID: 2100000, guid: 2e865f5ed10ab6545bbd110d58c343aa, type: 2}
   UnFreezing: {fileID: 2100000, guid: f209fdefd84aa51429160194a51ff4f6, type: 2}
   freezeTime: 5
@@ -2622,6 +2630,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (26)
@@ -3064,6 +3076,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (2)
@@ -3534,6 +3550,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (7)
@@ -4037,7 +4057,7 @@ MonoBehaviour:
   WayPoints:
   - {fileID: 92321614}
   - {fileID: 834764478}
-  moveSpeed: 0.05
+  moveSpeed: 0.025
   Freezing: {fileID: 2100000, guid: 2e865f5ed10ab6545bbd110d58c343aa, type: 2}
   UnFreezing: {fileID: 2100000, guid: f209fdefd84aa51429160194a51ff4f6, type: 2}
   freezeTime: 5
@@ -4786,6 +4806,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (14)
@@ -5211,7 +5235,7 @@ GameObject:
   - component: {fileID: 1004660155}
   - component: {fileID: 1004660154}
   - component: {fileID: 1004660153}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stairs
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -6045,7 +6069,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087915713}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
@@ -6107,13 +6131,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087915713}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 65.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1095370846
 GameObject:
   m_ObjectHideFlags: 0
@@ -6385,6 +6409,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (27)
@@ -6442,6 +6470,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (9)
@@ -6662,6 +6694,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (21)
@@ -6776,6 +6812,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (23)
@@ -7062,6 +7102,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (4)
@@ -7366,6 +7410,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (6)
@@ -7480,6 +7528,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (5)
@@ -8157,6 +8209,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (17)
@@ -9102,6 +9158,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (1)
@@ -9442,6 +9502,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (22)
@@ -9599,6 +9663,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea
@@ -12209,6 +12277,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (8)
@@ -12435,6 +12507,14 @@ PrefabInstance:
     - target: {fileID: 8033572332755455743, guid: 242292a23fd2aef44ad508910c7e1b11, type: 3}
       propertyPath: aimMask.m_Bits
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033572332755455743, guid: 242292a23fd2aef44ad508910c7e1b11, type: 3}
+      propertyPath: cameraSmoothing
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033572332755455743, guid: 242292a23fd2aef44ad508910c7e1b11, type: 3}
+      propertyPath: rotationSmoothing
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8033572334132390875, guid: 242292a23fd2aef44ad508910c7e1b11, type: 3}
       propertyPath: field of view
@@ -14213,7 +14293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5005148957060438665, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5
+      value: 4.69
       objectReference: {fileID: 0}
     - target: {fileID: 5005148957060438665, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14255,6 +14335,10 @@ PrefabInstance:
       propertyPath: CameraBase
       value: 
       objectReference: {fileID: 1681059171}
+    - target: {fileID: 5005148957060438669, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5005148957060438706, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -14968,6 +15052,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (24)
@@ -16195,6 +16283,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25127885}
     m_Modifications:
+    - target: {fileID: 1311836680358246160, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916528, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_Name
       value: DeepSea (3)
@@ -16315,7 +16407,7 @@ GameObject:
   - component: {fileID: 2101814645}
   - component: {fileID: 2101814644}
   - component: {fileID: 2101814643}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stairs (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
