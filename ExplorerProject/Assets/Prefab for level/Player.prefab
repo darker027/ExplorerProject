@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5005148956298370614}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.08999634, y: 0, z: 0.62000275}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5005148957060438665}
@@ -199,7 +199,7 @@ MonoBehaviour:
   CameraBase: {fileID: 0}
   PlayerFeet: {fileID: 5005148957491714492}
   moveSpeed: 5
-  jumpForce: 100
+  jumpForce: 75
   onGrounded: 1
   Xvelocity: 0
   Yvelocity: 0
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d221ea8e6645e4a812411470a892c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rootTransform: {fileID: 5005148957060438665}
+  _rootTransform: {fileID: 0}
   _holdingTransform: {fileID: 5005148956298370615}
 --- !u!1 &5005148957410178343
 GameObject:
@@ -268,7 +268,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5005148957410178343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.441, y: 0.204, z: 0.555}
+  m_LocalPosition: {x: 0.441, y: 0.204, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5005148957060438665}
@@ -328,7 +328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5005148957939514580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.09, y: 0, z: 0.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5005148957060438665}
