@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
+    [Header("Objects Reference")]
+    private Rigidbody rb;
+
     [Header("Waypoint Setup")]
     [SerializeField] private Transform[] WayPoints;
 
@@ -17,7 +20,7 @@ public class MovingPlatform : MonoBehaviour
     [Range(0.01f, 0.1f)]
     [SerializeField] private float moveSpeed;
 
-    [Header("Material Setup")]
+    [Header("Rendering Setup")]
     [SerializeField] private Material Freezing;
     [SerializeField] private Material UnFreezing;
 
@@ -28,10 +31,15 @@ public class MovingPlatform : MonoBehaviour
     private float freezeCountdown;
     private bool isFreezing;
 
+    [Header("Debug")]
+    [SerializeField] private float veloX;
+    [SerializeField] private float veloY;
+    [SerializeField] private float veloZ;
     // - - - - - - - - - - - - - - - - - - - -
     void Start()
     {
         targetPos = WayPoints[orderPoint].transform.position;
+        rb = gameObject.GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -52,13 +60,18 @@ public class MovingPlatform : MonoBehaviour
         }
         else
         {
-            gameObject.transform.position = Vector3.MoveTowards(currentPos, targetPos, moveSpeed);
+            //gameObject.transform.position = Vector3.MoveTowards(currentPos, targetPos, moveSpeed);
+            rb.MovePosition(Vector3.MoveTowards(currentPos, targetPos, moveSpeed));
         }
 
         if (currentPos == targetPos && !nextPoint)
         {
             StartCoroutine(NextPoint());
         }
+
+        veloX = rb.velocity.x;
+        veloY = rb.velocity.y;
+        veloZ = rb.velocity.z;
     }
 
     private IEnumerator NextPoint()
@@ -90,7 +103,7 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnTriggerEnter(Collider trigEnter)
     {
-        if(trigEnter.CompareTag("Player"))
+        if (trigEnter.CompareTag("Player"))
         {
             trigEnter.gameObject.transform.parent = this.transform;
         }

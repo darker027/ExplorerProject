@@ -28,10 +28,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("Character Jumping")]
     [SerializeField] private float jumpForce;
 
+    [Header("Character Detection")]
     private bool onGrounded;
 
-    RaycastHit slopeHit;
-
+    private RaycastHit slopeHit;
     private bool onSlope()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, (playerHeight / 2) + 0.5f))
@@ -52,15 +52,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private Rigidbody platformRigid;
+    private bool onMovingPlatform;
+
+
+
     [Header("Dragging")]
     [SerializeField] private float groundDrag;
     [SerializeField] private float airDrag;
-    [SerializeField] private float airTime;
 
     [Header("Debugging")]
     [SerializeField] private float Xvelocity;
     [SerializeField] private float Yvelocity;
     [SerializeField] private float Zvelocity;
+    [SerializeField] private Vector3 platformVelocity;
 
     // Start is called before the first frame update
     void Start()
@@ -113,9 +118,14 @@ public class PlayerMovement : MonoBehaviour
         {
             playerRigid.AddForce(movementDirection.normalized * movementSpeed * movementMultiplier, ForceMode.Acceleration);
         }
-        else if(onGrounded && onSlope())
+        else if (onGrounded && onSlope())
         {
             playerRigid.AddForce(slopeDirection.normalized * movementSpeed * movementMultiplier, ForceMode.Acceleration);
+        }
+        else if (onGrounded && onMovingPlatform)
+        {
+            playerRigid.velocity = new Vector3((playerRigid.velocity.x + platformRigid.velocity.x), playerRigid.velocity.y, (playerRigid.velocity.z + platformRigid.velocity.z));
+            //playerRigid.velocity = playerRigid.velocity + platformRigid.velocity;
         }
         else if (!onGrounded)
         {
@@ -135,6 +145,11 @@ public class PlayerMovement : MonoBehaviour
         Xvelocity = playerRigid.velocity.x;
         Yvelocity = playerRigid.velocity.y;
         Zvelocity = playerRigid.velocity.z;
+        if(platformRigid != null)
+        {
+            platformVelocity = platformRigid.velocity;
+        }
+        
     }
 
     void DragControl()
@@ -146,6 +161,15 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             playerRigid.drag = airDrag;
+        }
+    }
+
+    private void OnCollisionEnter(Collision colEnter)
+    {
+        if(colEnter.gameObject.CompareTag("MovingPlatform"))
+        {
+            onMovingPlatform = true;
+            platformRigid = colEnter.gameObject.GetComponent<Rigidbody>();
         }
     }
 

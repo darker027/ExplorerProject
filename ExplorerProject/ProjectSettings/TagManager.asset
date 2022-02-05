@@ -15,6 +15,7 @@ TagManager:
   - Electric
   - ElectricSwitch
   - Battery
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX

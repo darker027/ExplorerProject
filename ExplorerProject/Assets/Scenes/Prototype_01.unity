@@ -2241,9 +2241,10 @@ GameObject:
   - component: {fileID: 259637436}
   - component: {fileID: 259637431}
   - component: {fileID: 259637435}
+  - component: {fileID: 259637437}
   m_Layer: 6
   m_Name: MovePlatform (2)
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2339,10 +2340,13 @@ MonoBehaviour:
   WayPoints:
   - {fileID: 1376847423}
   - {fileID: 49356610}
-  moveSpeed: 0.025
+  moveSpeed: 0.041
   Freezing: {fileID: 2100000, guid: 2e865f5ed10ab6545bbd110d58c343aa, type: 2}
   UnFreezing: {fileID: 2100000, guid: f209fdefd84aa51429160194a51ff4f6, type: 2}
   freezeTime: 5
+  veloX: 0
+  veloY: 0
+  veloZ: 0
 --- !u!65 &259637436
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2354,8 +2358,24 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.25, z: 1}
-  m_Center: {x: 0, y: 0.625, z: 0}
+  m_Size: {x: 1, y: 0.1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!54 &259637437
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259637430}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &277360009 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1311836680427916535, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
@@ -4033,11 +4053,11 @@ GameObject:
   - component: {fileID: 849948103}
   m_Layer: 6
   m_Name: MovePlatform (1)
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &849948103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4053,10 +4073,13 @@ MonoBehaviour:
   WayPoints:
   - {fileID: 92321614}
   - {fileID: 834764478}
-  moveSpeed: 0.025
+  moveSpeed: 0.015
   Freezing: {fileID: 2100000, guid: 2e865f5ed10ab6545bbd110d58c343aa, type: 2}
   UnFreezing: {fileID: 2100000, guid: f209fdefd84aa51429160194a51ff4f6, type: 2}
   freezeTime: 5
+  veloX: 0
+  veloY: 0
+  veloZ: 0
 --- !u!65 &849948104
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4144,8 +4167,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.25, z: 1}
-  m_Center: {x: 0, y: 0.625, z: 0}
+  m_Size: {x: 1, y: 0.1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!4 &850160538 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1311836680427916535, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
@@ -5034,7 +5057,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980395969}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -70, y: 4.5, z: -52.5}
+  m_LocalPosition: {x: -70, y: 5, z: -52.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1586962405}
@@ -7940,7 +7963,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh92302
+  m_Name: pb_Mesh18340
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13112,7 +13135,7 @@ GameObject:
   - component: {fileID: 1776538183}
   - component: {fileID: 1776538182}
   - component: {fileID: 1776538187}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: fountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14328,9 +14351,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1949803333}
     - target: {fileID: 5005148957060438668, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
+      propertyPath: jumpForce
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005148957060438668, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
       propertyPath: CameraBase
       value: 
       objectReference: {fileID: 1681059171}
+    - target: {fileID: 5005148957060438668, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
+      propertyPath: movementSpeed
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5005148957060438669, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
       propertyPath: m_CollisionDetection
       value: 1
