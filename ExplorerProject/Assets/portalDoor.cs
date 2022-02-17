@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class portalDoor : MonoBehaviour
 {
     int nextSceneIndex;
+    [SerializeField] private Animator transitionAnim;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +22,16 @@ public class portalDoor : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (SceneManager.sceneCountInBuildSettings > nextSceneIndex)
-            {
-                SceneManager.LoadScene(nextSceneIndex);
-            }
+            StartCoroutine(LoadScene());
+        }
+    }
+    IEnumerator LoadScene()
+    {
+        transitionAnim.SetTrigger("endScene");
+        yield return new WaitForSeconds(1.5f);
+        if (SceneManager.sceneCountInBuildSettings > nextSceneIndex)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
         }
     }
 }
