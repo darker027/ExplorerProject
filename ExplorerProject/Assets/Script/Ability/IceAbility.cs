@@ -19,6 +19,7 @@ public class IceAbility : Ability
     {
         base.OnTriggerEnter(collision);
 
+
        
     }
 }
