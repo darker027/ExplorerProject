@@ -44,9 +44,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 return false;
             }
-
         }
-        else;
+        else
         {
             return false;
         }
@@ -91,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         slopeDirection = Vector3.ProjectOnPlane(movementDirection, slopeHit.normal);
 
         //Character Jumping
-        onGrounded = Physics.CheckSphere(PlayerFeet.transform.position, 0.1f, GroundMask);
+        onGrounded = Physics.CheckSphere(PlayerFeet.transform.position, 0.15f, GroundMask);
         Debug.Log(onGrounded);
 
         if (Input.GetKeyDown(KeyCode.Space) && onGrounded)
@@ -103,6 +102,8 @@ public class PlayerMovement : MonoBehaviour
 
         //Character Dragging
         DragControl();
+
+        print(onSlope());
     }
 
     private void FixedUpdate()
