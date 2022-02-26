@@ -16,6 +16,9 @@ TagManager:
   - ElectricSwitch
   - Battery
   - MovingPlatform
+  - upIce
+  - upLight
+  - cameraBase
   layers:
   - Default
   - TransparentFX

@@ -42,7 +42,7 @@ public class DeepPuddle : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && IsFreeze == false)
         {
-            SceneManager.LoadScene(scenename);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         if (other.CompareTag("Ice"))
         {
