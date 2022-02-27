@@ -31,6 +31,8 @@ public class UseAbility : MonoBehaviour
 
     private bool shooting, readyToShoot,reloading;
 
+    private bool isClickSwitch;
+
     //for checking upgrade
     //private bool haveTorch;
     private bool haveIce;
@@ -53,6 +55,7 @@ public class UseAbility : MonoBehaviour
         allowButtonHold = false;
         bulletSize = 0.0f;
         haveIce = false;
+        isClickSwitch = false;
         //haveTorch = false;
         if (Instance != null && Instance != this)
         {
@@ -92,6 +95,10 @@ public class UseAbility : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isClickSwitch == true)
+        {
+            return;
+        }
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         switch (currElement)
@@ -294,5 +301,9 @@ public class UseAbility : MonoBehaviour
             childLight.SetActive(true);
             
         }
+    }
+    public void setSwitchAbility(bool x)
+    {
+        isClickSwitch = x;
     }
 }

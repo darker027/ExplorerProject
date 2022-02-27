@@ -33,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     private bool onGrounded;
 
     private RaycastHit slopeHit;
+
+    private bool isClickSwitch;
     private bool onSlope()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, (playerHeight / 2) + 0.5f))
@@ -72,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
     {
         playerRigid = gameObject.GetComponent<Rigidbody>();
         playerRigid.freezeRotation = true;
-
+        isClickSwitch = false;
         playerHeight = gameObject.GetComponent<CapsuleCollider>().height;
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -85,6 +87,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isClickSwitch == true)
+        {
+            return;
+        }
         //find camera On load
         SceneManager.sceneLoaded += OnSceneLoaded;
         //Character Facing
@@ -181,6 +187,10 @@ public class PlayerMovement : MonoBehaviour
             onMovingPlatform = true;
             platformRigid = colEnter.gameObject.GetComponent<Rigidbody>();
         }
+    }
+    public void setSwitchMovement(bool x)
+    {
+        isClickSwitch = x;
     }
 
     //private void OnCollisionEnter(Collision Enter)
