@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UseAbility : MonoBehaviour
 {
@@ -9,8 +10,8 @@ public class UseAbility : MonoBehaviour
     private GameObject ability;
     public GameObject fire;
     public GameObject ice;
-    public GameObject electric;
-    
+    //public GameObject electric;
+
 
     //bullet force
     [SerializeField] private float shootForce,upwardForce;
@@ -30,10 +31,18 @@ public class UseAbility : MonoBehaviour
 
     private bool shooting, readyToShoot,reloading;
 
+    //for checking upgrade
+    //private bool haveTorch;
+    private bool haveIce;
+    [SerializeField] private GameObject childLight;
 
     //Ref
     [SerializeField] private Camera ThirdPersonCam;
     [SerializeField] private Transform attackPoint;
+    private Transform spawnPoint;
+
+    //singleton
+    private static UseAbility _instance; //{ get; private set; }
 
     // Start is called before the first frame update
     private void Awake()
@@ -43,12 +52,48 @@ public class UseAbility : MonoBehaviour
         readyToShoot = true;
         allowButtonHold = false;
         bulletSize = 0.0f;
-    
+        haveIce = false;
+        //haveTorch = false;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(this.gameObject);
+
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+       if(ThirdPersonCam == null)
+       {
+            ThirdPersonCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>() as Camera;
+       }
+        spawnPoint = GameObject.FindWithTag("Respawn").transform;
+        this.transform.position = spawnPoint.position;
+
+    }
+
+    public static UseAbility Instance
+    {
+        get
+        {
+
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<UseAbility>();
+                
+            }
+
+            return _instance;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
         switch (currElement)
         {
             case Element.currentElement.Fire:
@@ -63,13 +108,13 @@ public class UseAbility : MonoBehaviour
                     allowButtonHold = false;
                     break;
                 }
-            case Element.currentElement.Electro:
+            /*case Element.currentElement.Electro:
                 {
                     ability = electric;
                     allowButtonHold = true;
 
                     break;
-                }
+                }*/
 
 
 
@@ -140,14 +185,14 @@ public class UseAbility : MonoBehaviour
         {
             currElement = Element.currentElement.Fire;
         }
-        if(Input.GetKeyDown(KeyCode.Alpha2) && currElement != Element.currentElement.Ice)
+        if(Input.GetKeyDown(KeyCode.Alpha2) && currElement != Element.currentElement.Ice && haveIce == true)
         {
             currElement = Element.currentElement.Ice;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3) && currElement != Element.currentElement.Electro)
+      /*  if (Input.GetKeyDown(KeyCode.Alpha3) && currElement != Element.currentElement.Electro)
         {
             currElement = Element.currentElement.Electro;
-        }
+        }*/
     }
     private void Shoot()
     {
@@ -234,5 +279,20 @@ public class UseAbility : MonoBehaviour
     {
 
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == ("upIce"))
+        {
+            Destroy(other.gameObject);
+            haveIce = true;
+        }
+        if (other.tag == ("upLight"))
+        {
+            Destroy(other.gameObject);
+            //haveTorch = true;
+          
+            childLight.SetActive(true);
+            
+        }
+    }
 }

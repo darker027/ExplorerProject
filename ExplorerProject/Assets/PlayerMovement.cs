@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -74,10 +75,18 @@ public class PlayerMovement : MonoBehaviour
 
         playerHeight = gameObject.GetComponent<CapsuleCollider>().height;
     }
-
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (CameraBase == null)
+        {
+            CameraBase = GameObject.FindWithTag("cameraBase").transform;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
+        //find camera On load
+        SceneManager.sceneLoaded += OnSceneLoaded;
         //Character Facing
         gameObject.transform.rotation = Quaternion.Euler(0, CameraBase.eulerAngles.y, 0);
 
@@ -91,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
 
         //Character Jumping
         onGrounded = Physics.CheckSphere(PlayerFeet.transform.position, 0.15f, GroundMask);
-        Debug.Log(onGrounded);
+        
 
         if (Input.GetKeyDown(KeyCode.Space) && onGrounded)
         {
@@ -103,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
         //Character Dragging
         DragControl();
 
-        print(onSlope());
+        
     }
 
     private void FixedUpdate()
