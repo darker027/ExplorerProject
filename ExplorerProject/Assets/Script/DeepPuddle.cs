@@ -9,13 +9,14 @@ public class DeepPuddle : MonoBehaviour
     [SerializeField] private Material UnFreeze;
     [SerializeField] private float freezeTime;
     [SerializeField] private BoxCollider deepCollider;
-    private string scenename;
+    private bool isStartCoroutine;
     private bool IsFreeze;
     void Start()
     {
         gameObject.GetComponent<Renderer>().material = UnFreeze;
         IsFreeze = false;
-        scenename = "Prototype_01";
+        isStartCoroutine = false;
+     
     }
 
     // Update is called once per frame
@@ -27,7 +28,13 @@ public class DeepPuddle : MonoBehaviour
             
             gameObject.GetComponent<Renderer>().material = Freeze;
 
-            if (freezeTime <= 0)
+            if(freezeTime <= 2.0f && freezeTime > 0.0f && isStartCoroutine == false)
+            {
+                //  Debug.Log("in blink");
+                isStartCoroutine = true;
+                StartCoroutine(blink(2.0f));
+            }
+            else if (freezeTime <= 0)
             {
                 deepCollider.enabled = !deepCollider.enabled;
                 IsFreeze = false;
@@ -37,6 +44,19 @@ public class DeepPuddle : MonoBehaviour
         {
             gameObject.GetComponent<Renderer>().material = UnFreeze;
         }
+    }
+    private IEnumerator blink(float waitTime)
+    {
+        float endTime = Time.time + waitTime;
+        while (Time.time < endTime)
+        {
+            Debug.Log("in blink coroutine");
+            gameObject.GetComponent<Renderer>().enabled = false;
+            yield return new WaitForSeconds(0.2f);
+            gameObject.GetComponent<Renderer>().enabled = true;
+            yield return new WaitForSeconds(0.2f);
+        }
+        isStartCoroutine = false;
     }
     private void OnTriggerEnter(Collider other)
     {
