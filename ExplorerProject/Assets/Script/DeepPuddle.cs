@@ -51,9 +51,9 @@ public class DeepPuddle : MonoBehaviour
         while (Time.time < endTime)
         {
             Debug.Log("in blink coroutine");
-            gameObject.GetComponent<Renderer>().enabled = false;
+            gameObject.GetComponent<Renderer>().material = UnFreeze;
             yield return new WaitForSeconds(0.2f);
-            gameObject.GetComponent<Renderer>().enabled = true;
+            gameObject.GetComponent<Renderer>().material = Freeze;
             yield return new WaitForSeconds(0.2f);
         }
         isStartCoroutine = false;
