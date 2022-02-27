@@ -25,8 +25,10 @@ public class DeepPuddle : MonoBehaviour
         if (IsFreeze)
         {
             freezeTime -= Time.deltaTime;
-            
-            gameObject.GetComponent<Renderer>().material = Freeze;
+            if (isStartCoroutine == false)
+            {
+                gameObject.GetComponent<Renderer>().material = Freeze;
+            }
 
             if(freezeTime <= 2.0f && freezeTime > 0.0f && isStartCoroutine == false)
             {
