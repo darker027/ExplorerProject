@@ -6,6 +6,8 @@ public class iceCube : MonoBehaviour
 {
     [SerializeField] private float meltTime;
     private bool isMelt;
+
+    [SerializeField] private GameObject[] waters;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +20,14 @@ public class iceCube : MonoBehaviour
         if (isMelt)
         {
             meltTime -= Time.deltaTime;
+            transform.localScale -= new Vector3(1, 0.5f, 1) * Time.deltaTime;
         }
         if(meltTime <= 0.0f)
         {
+            for(int index = 0; index < waters.Length; index++)
+            {
+                waters[index].gameObject.SetActive(true);
+            }
             Destroy(this.gameObject);
         }
     }
