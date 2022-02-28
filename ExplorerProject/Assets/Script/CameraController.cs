@@ -67,7 +67,7 @@ public class CameraController : MonoBehaviour
         if (followObject == null)
         {
             followObject = GameObject.FindWithTag("Player").transform;
-            return;
+           // return;
         }
 
         xAxis += Input.GetAxis("Mouse X") * xSpeed;

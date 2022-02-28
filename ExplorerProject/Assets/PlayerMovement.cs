@@ -79,20 +79,22 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (CameraBase == null)
-        {
+//if (CameraBase == null)
+        
             CameraBase = GameObject.FindWithTag("cameraBase").transform;
-        }
+       
     }
     // Update is called once per frame
     void Update()
     {
-        if(isClickSwitch == true)
+        Debug.Log(isClickSwitch);
+        //find camera On load
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        if (isClickSwitch == true)
         {
             return;
         }
-        //find camera On load
-        SceneManager.sceneLoaded += OnSceneLoaded;
+       
         //Character Facing
         gameObject.transform.rotation = Quaternion.Euler(0, CameraBase.eulerAngles.y, 0);
 
