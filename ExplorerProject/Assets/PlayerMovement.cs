@@ -69,6 +69,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float Zvelocity;
     [SerializeField] private Vector3 platformVelocity;
 
+
+    private void OnEnable()
+    {
+        //find camera On load
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -79,17 +85,16 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-//if (CameraBase == null)
-        
+        //if (CameraBase == null)
+            
             CameraBase = GameObject.FindWithTag("cameraBase").transform;
        
     }
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isClickSwitch);
-        //find camera On load
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        
+        
         if (isClickSwitch == true)
         {
             return;

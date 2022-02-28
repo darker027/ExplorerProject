@@ -45,7 +45,10 @@ public class UseAbility : MonoBehaviour
 
     //singleton
     private static UseAbility _instance; //{ get; private set; }
-
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
     // Start is called before the first frame update
     private void Awake()
     {
@@ -99,7 +102,7 @@ public class UseAbility : MonoBehaviour
         {
             return;
         }
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        
 
         switch (currElement)
         {
