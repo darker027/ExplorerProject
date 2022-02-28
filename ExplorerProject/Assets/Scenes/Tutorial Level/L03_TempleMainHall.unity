@@ -14169,7 +14169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916535, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1311836680427916535, guid: c3d356720ea7dec44b2bead40aafc807, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19969,7 +19969,8 @@ GameObject:
   - component: {fileID: 968660296}
   - component: {fileID: 968660295}
   - component: {fileID: 968660294}
-  m_Layer: 0
+  - component: {fileID: 968660298}
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19985,7 +19986,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 968660293}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -20053,6 +20054,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &968660298
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968660293}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &968926245
 GameObject:
   m_ObjectHideFlags: 0
@@ -21183,7 +21197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1023464634
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34219,11 +34233,20 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5005148957060438707, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
+      propertyPath: childLight
+      value: 
+      objectReference: {fileID: 1662310964}
+    - target: {fileID: 5005148957060438707, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
       propertyPath: ThirdPersonCam
       value: 
       objectReference: {fileID: 1653459517}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
+--- !u!1 &1662310964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2106407737562892553, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
+  m_PrefabInstance: {fileID: 1662310963}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1664164371
 GameObject:
   m_ObjectHideFlags: 0
@@ -35009,7 +35032,7 @@ Transform:
   m_Children:
   - {fileID: 21120863}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1698860933
 MonoBehaviour:
@@ -41053,7 +41076,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1987036298
 GameObject:
@@ -41257,7 +41280,8 @@ GameObject:
   - component: {fileID: 1990619170}
   - component: {fileID: 1990619169}
   - component: {fileID: 1990619168}
-  m_Layer: 0
+  - component: {fileID: 1990619172}
+  m_Layer: 6
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41273,7 +41297,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1990619167}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -41341,6 +41365,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1990619172
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990619167}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!43 &1995378583
 Mesh:
   m_ObjectHideFlags: 0
@@ -44046,7 +44083,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 300530240745925537, guid: 8bc6db418897660429cea841fe1919e5, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 300530240745925537, guid: 8bc6db418897660429cea841fe1919e5, type: 3}
       propertyPath: m_LocalScale.x
