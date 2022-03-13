@@ -7,7 +7,9 @@ public class iceCube : MonoBehaviour
     [SerializeField] private float meltTime;
     private bool isMelt;
 
-    [SerializeField] private GameObject[] waters;
+    [SerializeField] [Range(0.0f, 1.0f)] private float lerpTime;
+    [SerializeField] Color meltColor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,14 +22,11 @@ public class iceCube : MonoBehaviour
         if (isMelt)
         {
             meltTime -= Time.deltaTime;
-            transform.localScale -= new Vector3(1, 0.5f, 1) * Time.deltaTime;
+            transform.localScale -= new Vector3(0, 0.5f, 0) * Time.deltaTime;
+            GetComponent<MeshRenderer>().material.color = Color.Lerp(GetComponent<MeshRenderer>().material.color, meltColor, lerpTime);
         }
         if(meltTime <= 0.0f)
         {
-            for(int index = 0; index < waters.Length; index++)
-            {
-                waters[index].gameObject.SetActive(true);
-            }
             Destroy(this.gameObject);
         }
     }
@@ -36,9 +35,7 @@ public class iceCube : MonoBehaviour
         if (other.CompareTag("sunLight"))
         {
             isMelt = true;
-        }
-
-        
+        } 
     }
     private void OnTriggerExit(Collider other)
     {

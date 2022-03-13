@@ -20,6 +20,7 @@ TagManager:
   - upLight
   - cameraBase
   - sunLight
+  - Water
   layers:
   - Default
   - TransparentFX
