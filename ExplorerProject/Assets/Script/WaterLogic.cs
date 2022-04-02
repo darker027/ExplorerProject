@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class WaterLogic : MonoBehaviour
 {
+    public enum direction { None, Forward, Backward, Left, Right};
+
+    private direction flowDirection;
+    public direction FlowDirection => flowDirection;
+
     [SerializeField] private GameObject waterPrefab;
 
     private float checkDelay;
@@ -40,6 +45,7 @@ public class WaterLogic : MonoBehaviour
                     else
                     {
                         StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(0, 0, 5)));
+                        flowDirection = direction.Forward;
                         forwardBlocked = true;
                         checkDelay = 1.0f;
                     }
@@ -58,6 +64,7 @@ public class WaterLogic : MonoBehaviour
                     else
                     {
                         StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(0, 0, -5)));
+                        flowDirection = direction.Backward;
                         backwardBlocked = true;
                         checkDelay = 1.0f;
                     }
@@ -76,6 +83,7 @@ public class WaterLogic : MonoBehaviour
                     else
                     {
                         StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(5, 0, 0)));
+                        flowDirection = direction.Right;
                         rightBlocked = true;
                         checkDelay = 1.0f;
                     }
@@ -94,6 +102,7 @@ public class WaterLogic : MonoBehaviour
                     else
                     {
                         StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(-5, 0, 0)));
+                        flowDirection = direction.Left;
                         leftBlocked = true;
                         checkDelay = 1.0f;
                     }
@@ -108,6 +117,7 @@ public class WaterLogic : MonoBehaviour
             else
             {
                 StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(0, -2.5f, 0)));
+                flowDirection = direction.None;
                 downBlocked = true;
                 checkDelay = 1.0f;
                 return;
