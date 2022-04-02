@@ -157,3 +157,4 @@ MonoBehaviour:
   UnFreeze: {fileID: 2100000, guid: 3ab348ad8b9684f4a8fe8cad57cb5daf, type: 2}
   freezeTime: 5
   deepCollider: {fileID: 1311836680358246160}
+  icePlatform: {fileID: 4208184817689819238, guid: 8328dc324915f294086da7ed9e4d24d0, type: 3}

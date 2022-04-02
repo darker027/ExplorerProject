@@ -35,7 +35,7 @@ public class UseAbility : MonoBehaviour
 
     //for checking upgrade
     //private bool haveTorch;
-    private bool haveIce;
+    [SerializeField] private bool haveIce;
     [SerializeField] private GameObject childLight;
 
     //Ref
