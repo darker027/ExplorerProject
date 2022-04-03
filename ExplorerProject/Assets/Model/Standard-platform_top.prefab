@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 905397038445541635}
   - component: {fileID: 2387456940820528676}
   m_Layer: 6
-  m_Name: Modular_standard-platform_top
+  m_Name: Standard-platform_top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
