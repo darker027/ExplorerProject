@@ -192,9 +192,21 @@ public class PlayerMovement : MonoBehaviour
         if(colEnter.gameObject.CompareTag("MovingPlatform"))
         {
             onMovingPlatform = true;
-            platformRigid = colEnter.gameObject.GetComponent<Rigidbody>();
+            //platformRigid = colEnter.gameObject.GetComponent<Rigidbody>();
+            gameObject.transform.parent = colEnter.transform;
         }
     }
+
+    private void OnCollisionExit(Collision colExit)
+    {
+        if (colExit.gameObject.CompareTag("MovingPlatform"))
+        {
+            onMovingPlatform = false;
+            //platformRigid = colEnter.gameObject.GetComponent<Rigidbody>();
+            gameObject.transform.parent = null;
+        }
+    }
+
     public void setSwitchMovement(bool x)
     {
         isClickSwitch = x;

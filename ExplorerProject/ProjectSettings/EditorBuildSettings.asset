@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial Level/L03_TempleMainHall.unity
     guid: 79fa839b88aadc14f802809eb54c6463
   - enabled: 1
+    path: Assets/Scenes/Tutorial Level/L04_TempleSewer.unity
+    guid: 33a10175dfb072645996ab8110a63a02
+  - enabled: 0
     path: Assets/Scenes/Tutorial Level/L04_TempleWalkWay.unity
     guid: 0fb62ea064d42ad408a18e21a624e9bd
   - enabled: 1

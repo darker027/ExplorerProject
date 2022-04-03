@@ -292,7 +292,7 @@ MonoBehaviour:
     m_Bits: 64
   CameraBase: {fileID: 0}
   PlayerFeet: {fileID: 5005148957491714492}
-  movementSpeed: 5
+  movementSpeed: 5.5
   movementMultiplier: 7.5
   aerialMultiplier: 0.25
   jumpForce: 20
@@ -325,6 +325,7 @@ MonoBehaviour:
   bulletPerTap: 1
   magazineSize: 100
   bulletMaximumSize: 5
+  haveIce: 0
   childLight: {fileID: 0}
   ThirdPersonCam: {fileID: 0}
   attackPoint: {fileID: 5005148956753034129}

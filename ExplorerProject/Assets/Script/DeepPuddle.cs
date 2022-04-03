@@ -12,6 +12,7 @@ public class DeepPuddle : MonoBehaviour
     [SerializeField] private GameObject icePlatform;
     private bool isStartCoroutine;
     private bool IsFreeze;
+
     void Start()
     {
         gameObject.GetComponent<Renderer>().material = UnFreeze;
@@ -49,10 +50,13 @@ public class DeepPuddle : MonoBehaviour
             /* freezeTime = 5;
              deepCollider.enabled = !deepCollider.enabled;
              IsFreeze = true;*/
+            Destroy(other.gameObject);
             IsFreeze = true;
-            Instantiate(icePlatform, new Vector3(other.transform.position.x, other.transform.position.y+ 0.5f , other.transform.position.z), Quaternion.identity);
+            GameObject isntIce = Instantiate(icePlatform, new Vector3(other.transform.position.x, other.transform.position.y + 0.5f , other.transform.position.z), Quaternion.identity);
+            isntIce.GetComponent<icePlatform>().onWater = this.gameObject.GetComponent<WaterLogic>();
         }
     }
+
     void platform()
     {
         if (IsFreeze)
