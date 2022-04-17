@@ -27,6 +27,8 @@ public class icePlatform : MonoBehaviour
         {
             blinking();
         }
+
+        flowing();
     }
     private IEnumerator blink(float waitTime)
     {
@@ -68,7 +70,25 @@ public class icePlatform : MonoBehaviour
 
     void flowing()
     {
-
+        if(onWater != null)
+        {
+            if (onWater.flowDirection == WaterLogic.direction.Forward)
+            {
+                transform.position += transform.forward * flowSpeed * Time.deltaTime;
+            }
+            else if (onWater.flowDirection == WaterLogic.direction.Backward)
+            {
+                transform.position -= transform.forward * flowSpeed * Time.deltaTime;
+            }
+            else if (onWater.flowDirection == WaterLogic.direction.Right)
+            {
+                transform.position += transform.right * flowSpeed * Time.deltaTime;
+            }
+            else if (onWater.flowDirection == WaterLogic.direction.Left)
+            {
+                transform.position -= transform.right * flowSpeed * Time.deltaTime;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider trigEnter)
@@ -80,31 +100,6 @@ public class icePlatform : MonoBehaviour
         if(trigEnter.CompareTag("sunLight"))
         {
             isMelting = true;
-        }
-    }
-
-    private void OnTriggerStay(Collider trigStay)
-    {
-        if (trigStay.CompareTag("Water"))
-        {
-            if (onWater.flowDirection == WaterLogic.direction.Forward)
-            {
-                transform.position += transform.forward * flowSpeed * Time.deltaTime;
-            }
-            else if(onWater.flowDirection == WaterLogic.direction.Backward)
-            {
-                transform.position -= transform.forward * flowSpeed * Time.deltaTime;
-            }
-            else if(onWater.flowDirection == WaterLogic.direction.Right)
-            {
-                transform.position += transform.right * flowSpeed * Time.deltaTime;
-            }
-            else if(onWater.flowDirection == WaterLogic.direction.Left)
-            {
-                transform.position -= transform.right * flowSpeed * Time.deltaTime;
-            }
-
-            Debug.Log("moving");
         }
     }
 }

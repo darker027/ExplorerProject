@@ -3264,7 +3264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5005148957060438668, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
       propertyPath: jumpForce
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5005148957060438668, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
       propertyPath: CameraBase
@@ -3288,7 +3288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5005148957060438669, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
       propertyPath: m_Mass
-      value: 1
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 5005148957060438669, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
       propertyPath: m_AngularDrag
@@ -3331,7 +3331,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17020
+  m_Name: pb_Mesh58574
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3495,7 +3495,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17000
+  m_Name: pb_Mesh58554
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9658,7 +9658,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16836
+  m_Name: pb_Mesh58400
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

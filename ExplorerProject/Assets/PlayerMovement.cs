@@ -57,8 +57,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody platformRigid;
     private bool onMovingPlatform;
 
-
-
     [Header("Dragging")]
     [SerializeField] private float groundDrag;
     [SerializeField] private float airDrag;
@@ -93,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(onSlope());
         
         if (isClickSwitch == true)
         {
@@ -112,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         slopeDirection = Vector3.ProjectOnPlane(movementDirection, slopeHit.normal);
 
         //Character Jumping
-        onGrounded = Physics.CheckSphere(PlayerFeet.transform.position, 0.15f, GroundMask);
+        onGrounded = Physics.CheckSphere(PlayerFeet.transform.position, 0.25f, GroundMask);
         
 
         if (Input.GetKeyDown(KeyCode.Space) && onGrounded)
@@ -130,6 +128,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        slopeDirection = Vector3.ProjectOnPlane(movementDirection, slopeHit.normal);
         CharacterMovement();
     }
 
@@ -154,6 +153,8 @@ public class PlayerMovement : MonoBehaviour
         {
             playerRigid.AddForce(movementDirection.normalized * movementSpeed * movementMultiplier * aerialMultiplier, ForceMode.Acceleration);
         }
+
+        Debug.DrawLine(gameObject.transform.position, (slopeDirection.normalized * 5) + gameObject.transform.position, Color.red);
 
         /*if (onGrounded)
         {
