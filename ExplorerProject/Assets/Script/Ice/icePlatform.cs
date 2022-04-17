@@ -7,6 +7,9 @@ public class icePlatform : MonoBehaviour
     [SerializeField] private Material Freeze;
     [SerializeField] private Material UnFreeze;
     [SerializeField] private float freezeTime = 5.0f;
+    private float smoothTime = 5.0f;
+    private float velo = 0f;
+
     private bool isStartCoroutine;
     private bool isFreeze;
     private bool isMelting;
@@ -17,16 +20,43 @@ public class icePlatform : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        shrinkingEffect(new Vector3(0, 0, 0), 10);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isMelting)
+        /*if(isMelting)
         {
             blinking();
+        }*/
+        if(transform.localScale == new Vector3(0, 0, 0))
+        {
+            Destroy(this.gameObject);
         }
+        
+    }
+  
+    private void shrinkingEffect(Vector3 targetScale, float duration)
+    {
+        StartCoroutine(ScaleToTargetCoroutine(targetScale, duration));
+    }
+    private IEnumerator ScaleToTargetCoroutine(Vector3 targetScale, float duration)
+    {
+        Vector3 startScale = transform.localScale;
+        float timer = 0.0f;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            float t = timer / duration;
+            //smoother step algorithm
+            t = t * t * t * (t * (6f * t - 15f) + 10f);
+            transform.localScale = Vector3.Lerp(startScale, targetScale, t);
+            yield return null;
+        }
+
+        yield return null;
     }
     private IEnumerator blink(float waitTime)
     {
@@ -41,7 +71,6 @@ public class icePlatform : MonoBehaviour
         }
         isStartCoroutine = false;
     }
-
     void blinking()
     {
         freezeTime -= Time.deltaTime;
@@ -104,7 +133,7 @@ public class icePlatform : MonoBehaviour
                 transform.position -= transform.right * flowSpeed * Time.deltaTime;
             }
 
-            Debug.Log("moving");
+           // Debug.Log("moving");
         }
     }
 }

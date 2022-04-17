@@ -5510,7 +5510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5005148957060438707, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
       propertyPath: haveIce
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5005148957060438707, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
       propertyPath: childLight
