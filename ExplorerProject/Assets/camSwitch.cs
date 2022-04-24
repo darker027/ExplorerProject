@@ -8,18 +8,20 @@ public class camSwitch : MonoBehaviour
     [SerializeField] private moveSpotLight SpotLight;
     private GameObject player;
     private bool playerNear;
+    private bool useSwitch;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerNear = false;
+        useSwitch = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(playerNear == false)
+        if (playerNear == false)
         {
             return;
         }
@@ -29,13 +31,15 @@ public class camSwitch : MonoBehaviour
             player.GetComponent<PlayerMovement>().setSwitchMovement(true);
             SpotLight.setSwitchSpotlight(true);
             topViewCam.SetActive(true);
+            useSwitch = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.E) && useSwitch)
         {
             player.GetComponent<UseAbility>().setSwitchAbility(false);
             player.GetComponent<PlayerMovement>().setSwitchMovement(false);
             SpotLight.setSwitchSpotlight(false);
             topViewCam.SetActive(false);
+            useSwitch = false;
         }
     }
     private void OnTriggerEnter(Collider other)

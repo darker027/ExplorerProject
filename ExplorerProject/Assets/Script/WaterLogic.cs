@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaterLogic : MonoBehaviour
 {
-    public enum direction { None, Forward, Backward, Left, Right};
+    public enum direction { None, Forward, Backward, Left, Right };
 
     public direction flowDirection;
 
@@ -19,16 +19,32 @@ public class WaterLogic : MonoBehaviour
     private bool backwardBlocked;
     private bool rightBlocked;
     private bool leftBlocked;
+    [SerializeField] private bool Test;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     void Update()
     {
-        if(!checkFlowing)
+        
+            NormalMode();
+       
+
+     
+    }
+
+    IEnumerator WaterGenarating(GameObject waterReference, Vector3 waterPosition)
+    {
+        yield return new WaitForSeconds(0.5f);
+        GameObject waterSpawn = Instantiate(waterReference, waterPosition, Quaternion.identity);
+    }
+
+    private void NormalMode()
+    {
+        if (!checkFlowing)
         {
             if (!downBlocked && checkDelay <= 0)
             {
@@ -133,9 +149,5 @@ public class WaterLogic : MonoBehaviour
         }
     }
 
-    IEnumerator WaterGenarating(GameObject waterReference, Vector3 waterPosition)
-    {
-        yield return new WaitForSeconds(0.5f);
-        GameObject waterSpawn = Instantiate(waterReference, waterPosition, Quaternion.identity);
-    }
+ 
 }

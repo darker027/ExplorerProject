@@ -7,6 +7,7 @@ public class icePlatform : MonoBehaviour
     [SerializeField] private Material Freeze;
     [SerializeField] private Material UnFreeze;
     [SerializeField] private float freezeTime = 5.0f;
+    [SerializeField] private float shrinkingTime = 5.0f;
     private float smoothTime = 5.0f;
     private float velo = 0f;
 
@@ -20,16 +21,16 @@ public class icePlatform : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shrinkingEffect(new Vector3(0, 0, 0), 10);
+        shrinkingEffect(new Vector3(0, 0, 0), shrinkingTime);
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*if(isMelting)
+        if(isMelting)
         {
-            blinking();
-        }*/
+            shrinkingEffect(new Vector3(0, 0, 0), shrinkingTime);
+        }
         if(transform.localScale == new Vector3(0, 0, 0))
         {
             Destroy(this.gameObject);
