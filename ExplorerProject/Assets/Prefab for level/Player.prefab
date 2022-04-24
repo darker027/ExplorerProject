@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 5005148957060438668}
   - component: {fileID: 5005148957060438707}
   - component: {fileID: 5005148957060438666}
+  - component: {fileID: 6220366966327750420}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -292,9 +293,11 @@ MonoBehaviour:
     m_Bits: 64
   CameraBase: {fileID: 0}
   PlayerFeet: {fileID: 5005148957491714492}
-  movementSpeed: 5.5
+  moveSpeed: 0
+  runSpeed: 0
   movementMultiplier: 7.5
   aerialMultiplier: 0.25
+  stepHeight: 0
   jumpForce: 20
   groundDrag: 3
   airDrag: 1
@@ -302,6 +305,8 @@ MonoBehaviour:
   Yvelocity: 0
   Zvelocity: 0
   platformVelocity: {x: 0, y: 0, z: 0}
+  feetPos: {x: 0, y: 0, z: 0}
+  feetFor: {x: 0, y: 0, z: 0}
 --- !u!114 &5005148957060438707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,6 +348,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rootTransform: {fileID: 0}
   _holdingTransform: {fileID: 5005148956298370615}
+--- !u!114 &6220366966327750420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005148957060438706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386dda14f13c1024d89d7f401b10d215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5005148957410178343
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +414,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5005148957491714467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -0.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5005148957060438665}

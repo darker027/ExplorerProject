@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Object Reference")]
+    [Header("Objects Reference")]
     [SerializeField] private LayerMask GroundMask;
     [SerializeField] private Transform CameraBase;
     [SerializeField] private Transform PlayerFeet;
@@ -15,9 +15,12 @@ public class PlayerMovement : MonoBehaviour
     private float playerHeight;
 
     [Header("Character Movement")]
-    [SerializeField] private float movementSpeed;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float runSpeed;
     [SerializeField] private float movementMultiplier;
     [SerializeField] private float aerialMultiplier;
+
+    [SerializeField] private float stepHeight;
 
     private float horizontalMovement;
     private float verticalMovement;
@@ -25,6 +28,13 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 movementDirection;
     private Vector3 slopeDirection;
     private Vector3 Movement;
+
+    private float stamina = 10f;
+    public float playerStamina => stamina;
+    private float cooldownTime = 5f;
+    public float playerCDTime => cooldownTime;
+    private bool exhausted;
+    public bool Exhaust => exhausted;
 
     [Header("Character Jumping")]
     [SerializeField] private float jumpForce;
@@ -57,8 +67,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody platformRigid;
     private bool onMovingPlatform;
 
-
-
     [Header("Dragging")]
     [SerializeField] private float groundDrag;
     [SerializeField] private float airDrag;
@@ -67,7 +75,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float Xvelocity;
     [SerializeField] private float Yvelocity;
     [SerializeField] private float Zvelocity;
-    [SerializeField] private Vector3 platformVelocity;
+    //[SerializeField] private Vector3 platformVelocity;
+
+    //[SerializeField] private Vector3 feetPos;
+    //[SerializeField] private Vector3 feetFor;
 
 
     private void OnEnable()
@@ -80,7 +91,9 @@ public class PlayerMovement : MonoBehaviour
     {
         playerRigid = gameObject.GetComponent<Rigidbody>();
         playerRigid.freezeRotation = true;
+
         isClickSwitch = false;
+
         playerHeight = gameObject.GetComponent<CapsuleCollider>().height;
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -93,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(onSlope());
         
         if (isClickSwitch == true)
         {
@@ -112,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
         slopeDirection = Vector3.ProjectOnPlane(movementDirection, slopeHit.normal);
 
         //Character Jumping
-        onGrounded = Physics.CheckSphere(PlayerFeet.transform.position, 0.15f, GroundMask);
+        onGrounded = Physics.CheckSphere(PlayerFeet.transform.position, 0.25f, GroundMask);
         
 
         if (Input.GetKeyDown(KeyCode.Space) && onGrounded)
@@ -130,49 +143,109 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        slopeDirection = Vector3.ProjectOnPlane(movementDirection, slopeHit.normal);
         CharacterMovement();
     }
 
     void CharacterMovement()
     {
-        //Movement = transform.TransformDirection(movementDirection);
-
         if (onGrounded)
         {
-            playerRigid.AddForce(movementDirection.normalized * movementSpeed * movementMultiplier, ForceMode.Acceleration);
+            if (!onSlope())
+                StairStep();
+
+            if (Input.GetKey(KeyCode.LeftShift) && stamina > 0 && !exhausted && movementDirection != Vector3.zero)
+            {
+                playerRigid.AddForce(movementDirection.normalized * runSpeed * movementMultiplier, ForceMode.Acceleration);
+                stamina -= 2 * Time.deltaTime;
+                stamina = Mathf.Clamp(stamina, 0, 10);
+            }
+            else
+            {
+                if (exhausted)
+                {
+                    playerRigid.AddForce(movementDirection.normalized * (moveSpeed - 1) * movementMultiplier, ForceMode.Acceleration);
+                }
+                else
+                {
+                    playerRigid.AddForce(movementDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
+                }
+
+                if (stamina > 0 && stamina < 10)
+                {
+                    stamina += Time.deltaTime;
+                    stamina = Mathf.Clamp(stamina, 0, 10);
+                }
+                else if (stamina <= 0)
+                {
+                    cooldownTime -= Time.deltaTime;
+                    exhausted = true;
+
+                    if (cooldownTime < 0)
+                    {
+                        stamina += Time.deltaTime;
+                        stamina = Mathf.Clamp(stamina, 0, 10);
+                        exhausted = false;
+                        cooldownTime = 5.0f;
+                    }
+                }
+            }
         }
         else if (onGrounded && onSlope())
         {
-            playerRigid.AddForce(slopeDirection.normalized * movementSpeed * movementMultiplier, ForceMode.Acceleration);
+            playerRigid.AddForce(slopeDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
         }
         else if (onGrounded && onMovingPlatform)
         {
             playerRigid.velocity = new Vector3((playerRigid.velocity.x + platformRigid.velocity.x), playerRigid.velocity.y, (playerRigid.velocity.z + platformRigid.velocity.z));
-            //playerRigid.velocity = playerRigid.velocity + platformRigid.velocity;
         }
         else if (!onGrounded)
         {
-            playerRigid.AddForce(movementDirection.normalized * movementSpeed * movementMultiplier * aerialMultiplier, ForceMode.Acceleration);
-        }
+            playerRigid.AddForce(movementDirection.normalized * moveSpeed * movementMultiplier * aerialMultiplier, ForceMode.Acceleration);
+        } 
 
-        /*if (onGrounded)
-        {
-            Movement = transform.TransformDirection(movementDirection) * movementSpeed * groundMultiplier;
-        }
-        else
-        {
-            Movement = transform.TransformDirection(movementDirection) * movementSpeed * airMultiplier;
-        }
-
-        playerRigid.velocity = new Vector3(Movement.x, playerRigid.velocity.y, Movement.z);*/
         Xvelocity = playerRigid.velocity.x;
         Yvelocity = playerRigid.velocity.y;
         Zvelocity = playerRigid.velocity.z;
-        if(platformRigid != null)
+
+    }
+
+    void StairStep()
+    {
+        if (movementDirection != Vector3.zero)
         {
-            platformVelocity = platformRigid.velocity;
+            RaycastHit hitLower;
+            if (Physics.Raycast(PlayerFeet.position, transform.TransformDirection(PlayerFeet.forward), out hitLower, 0.5f, GroundMask))
+            {
+                Debug.Log(hitLower.transform.name);
+
+                RaycastHit hitUpper;
+                if (!Physics.Raycast(new Vector3(PlayerFeet.position.x, PlayerFeet.position.y + stepHeight, PlayerFeet.position.z), transform.TransformDirection(PlayerFeet.forward), out hitUpper, 0.6f, GroundMask))
+                {
+                    playerRigid.position += new Vector3(0f, 0.1f, 0f);
+                }
+            }
+
+            RaycastHit hitLowerR45;
+            if (Physics.Raycast(PlayerFeet.position, transform.TransformDirection(1.5f, 0, 1), out hitLowerR45, 0.5f, GroundMask))
+            {
+                RaycastHit hitUpperR45;
+                if (!Physics.Raycast(new Vector3(PlayerFeet.position.x, PlayerFeet.position.y + stepHeight, PlayerFeet.position.z), transform.TransformDirection(1.5f, 0, 1), out hitUpperR45, 0.6f, GroundMask))
+                {
+                    playerRigid.position += new Vector3(0f, 0.1f, 0f);
+                }
+            }
+
+            RaycastHit hitLowerL45;
+            if (Physics.Raycast(PlayerFeet.position, transform.TransformDirection(-1.5f, 0, 1), out hitLowerL45, 0.5f, GroundMask))
+            {
+                RaycastHit hitUpperL45;
+                if (!Physics.Raycast(new Vector3(PlayerFeet.position.x, PlayerFeet.position.y + stepHeight, PlayerFeet.position.z), transform.TransformDirection(-1.5f, 0, 1), out hitUpperL45, 0.6f, GroundMask))
+                {
+                    playerRigid.position += new Vector3(0f, 0.1f, 0f);
+                }
+            }
         }
-        
     }
 
     void DragControl()
@@ -211,20 +284,4 @@ public class PlayerMovement : MonoBehaviour
     {
         isClickSwitch = x;
     }
-
-    //private void OnCollisionEnter(Collision Enter)
-    //{
-    //    if(Enter.gameObject.CompareTag("Platform"))
-    //    {
-    //        onGrounded = true;
-    //    }
-    //}
-
-    //private void OnCollisionExit(Collision Exit)
-    //{
-    //    if(Exit.gameObject.CompareTag("Platform"))
-    //    {
-    //        onGrounded = false;
-    //    }
-    //}
 }
