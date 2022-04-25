@@ -8,6 +8,9 @@ public class WaterLogic : MonoBehaviour
 
     public direction flowDirection;
 
+    public direction prioityDirection;
+    public int waterValue;
+
     [SerializeField] private GameObject waterPrefab;
 
     private float checkDelay;
@@ -20,6 +23,8 @@ public class WaterLogic : MonoBehaviour
     private bool rightBlocked;
     private bool leftBlocked;
     [SerializeField] private bool Test;
+
+    private WaterLogic otherWater;
 
     // Start is called before the first frame update
     void Start()
@@ -58,14 +63,49 @@ public class WaterLogic : MonoBehaviour
                         {
                             if (forwardHit.transform.tag == "Water" || forwardHit.transform.tag == "Platform")
                             {
-                                forwardBlocked = true;
+                                if(forwardHit.transform.tag == "Platform")
+                                {
+                                    forwardBlocked = true;
+                                }
+
+                                if (forwardHit.transform.parent != this.gameObject.transform.parent)
+                                {
+                                    if (forwardHit.transform.TryGetComponent<WaterLogic>(out WaterLogic forwardWater))
+                                    {
+                                        if(forwardWater.waterValue < waterValue + 1)
+                                        {
+                                            if(otherWater != forwardWater)
+                                            {
+                                                forwardWater.waterValue += 1;
+                                                otherWater = forwardWater;
+                                            }
+                                        }
+                                        else
+                                        {
+
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (forwardHit.transform.TryGetComponent<WaterLogic>(out WaterLogic forwardWater))
+                                    {
+                                        if (forwardWater.waterValue < waterValue)
+                                        {
+                                            forwardWater.waterValue = waterValue;
+                                        }
+                                        else
+                                        {
+
+                                        }
+                                    }
+                                }
                             }
                         }
                         else
                         {
                             StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(0, 0, 5)));
                             flowDirection = direction.Forward;
-                            forwardBlocked = true;
                             checkDelay = 1.0f;
                         }
                     }
@@ -77,14 +117,49 @@ public class WaterLogic : MonoBehaviour
                         {
                             if (backwardHit.transform.tag == "Water" || backwardHit.transform.tag == "Platform")
                             {
-                                backwardBlocked = true;
+                                if (backwardHit.transform.tag == "Platform")
+                                {
+                                    backwardBlocked = true;
+                                }
+
+                                if (backwardHit.transform.parent != this.gameObject.transform.parent)
+                                {
+                                    if (backwardHit.transform.TryGetComponent<WaterLogic>(out WaterLogic backwardWater))
+                                    {
+                                        if (backwardWater.waterValue < waterValue + 1)
+                                        {
+                                            if (otherWater != backwardWater)
+                                            {
+                                                backwardWater.waterValue += 1;
+                                                otherWater = backwardWater;
+                                            }
+                                        }
+                                        else
+                                        {
+
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (backwardHit.transform.TryGetComponent<WaterLogic>(out WaterLogic backwardWater))
+                                    {
+                                        if (backwardWater.waterValue < waterValue)
+                                        {
+                                            backwardWater.waterValue = waterValue;
+                                        }
+                                        else
+                                        {
+
+                                        }
+                                    }
+                                }
                             }
                         }
                         else
                         {
                             StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(0, 0, -5)));
                             flowDirection = direction.Backward;
-                            backwardBlocked = true;
                             checkDelay = 1.0f;
                         }
                     }
@@ -96,14 +171,49 @@ public class WaterLogic : MonoBehaviour
                         {
                             if (rightHit.transform.tag == "Water" || rightHit.transform.tag == "Platform")
                             {
-                                rightBlocked = true;
+                                if (rightHit.transform.tag == "Platform")
+                                {
+                                    rightBlocked = true;
+                                }
+
+                                if (rightHit.transform.parent != this.gameObject.transform.parent)
+                                {
+                                    if (rightHit.transform.TryGetComponent<WaterLogic>(out WaterLogic rightWater))
+                                    {
+                                        if (rightWater.waterValue < waterValue + 1)
+                                        {
+                                            if (otherWater != rightWater)
+                                            {
+                                                rightWater.waterValue += 1;
+                                                otherWater = rightWater;
+                                            }
+                                        }
+                                        else
+                                        {
+
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (rightHit.transform.TryGetComponent<WaterLogic>(out WaterLogic rightWater))
+                                    {
+                                        if (rightWater.waterValue < waterValue)
+                                        {
+                                            rightWater.waterValue = waterValue;
+                                        }
+                                        else
+                                        {
+
+                                        }
+                                    }
+                                }
                             }
                         }
                         else
                         {
                             StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(5, 0, 0)));
                             flowDirection = direction.Right;
-                            rightBlocked = true;
                             checkDelay = 1.0f;
                         }
                     }
@@ -115,14 +225,48 @@ public class WaterLogic : MonoBehaviour
                         {
                             if (leftHit.transform.tag == "Water" || leftHit.transform.tag == "Platform")
                             {
-                                leftBlocked = true;
+                                if (leftHit.transform.tag == "Platform")
+                                {
+                                    leftBlocked = true;
+                                }
+
+                                if (leftHit.transform.parent != this.gameObject.transform.parent)
+                                {
+                                    if (leftHit.transform.TryGetComponent<WaterLogic>(out WaterLogic leftWater))
+                                    {
+                                        if (leftWater.waterValue < waterValue + 1)
+                                        {
+                                            if (otherWater != leftWater)
+                                            {
+                                                leftWater.waterValue += 1;
+                                                otherWater = leftWater;                                            }
+                                        }
+                                        else
+                                        {
+
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (leftHit.transform.TryGetComponent<WaterLogic>(out WaterLogic leftWater))
+                                    {
+                                        if (leftWater.waterValue < waterValue)
+                                        {
+                                            leftWater.waterValue = waterValue;
+                                        }
+                                        else
+                                        {
+
+                                        }
+                                    }
+                                }
                             }
                         }
                         else
                         {
                             StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(-5, 0, 0)));
                             flowDirection = direction.Left;
-                            leftBlocked = true;
                             checkDelay = 1.0f;
                         }
                     }
@@ -149,5 +293,13 @@ public class WaterLogic : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
  
+=======
+    IEnumerator WaterGenarating(GameObject waterReference, Vector3 waterPosition)
+    {
+        yield return new WaitForSeconds(0.5f);
+        GameObject waterSpawn = Instantiate(waterReference, waterPosition, Quaternion.identity, this.gameObject.transform.parent);
+    }
+>>>>>>> Stashed changes
 }

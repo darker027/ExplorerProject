@@ -1,5 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< Updated upstream
 --- !u!1 &1311836680358246190
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,6 +45,8 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1311836680427916528
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,8 +78,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 2, z: 5}
-  m_Children:
-  - {fileID: 1311836680358246161}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -157,7 +159,7 @@ MonoBehaviour:
   Freeze: {fileID: 2100000, guid: 4d224d8a956ab1d44b949cf9f7f89a51, type: 2}
   UnFreeze: {fileID: 2100000, guid: 3ab348ad8b9684f4a8fe8cad57cb5daf, type: 2}
   freezeTime: 5
-  deepCollider: {fileID: 1311836680358246160}
+  deepCollider: {fileID: 0}
   icePlatform: {fileID: 4208184817689819238, guid: 8328dc324915f294086da7ed9e4d24d0, type: 3}
 --- !u!114 &3476746353430081648
 MonoBehaviour:
@@ -172,7 +174,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flowDirection: 0
+<<<<<<< Updated upstream
   operationMode: 0
   waterPrefab: {fileID: 1311836680427916528}
   checkFlowing: 0
   Test: 0
+=======
+  prioityDirection: 0
+  waterValue: 0
+  waterPrefab: {fileID: 1311836680427916528}
+  checkFlowing: 0
+>>>>>>> Stashed changes
