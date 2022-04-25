@@ -293,20 +293,17 @@ MonoBehaviour:
     m_Bits: 64
   CameraBase: {fileID: 0}
   PlayerFeet: {fileID: 5005148957491714492}
-  moveSpeed: 0
-  runSpeed: 0
-  movementMultiplier: 7.5
-  aerialMultiplier: 0.25
-  stepHeight: 0
-  jumpForce: 20
+  moveSpeed: 2
+  runSpeed: 4
+  movementMultiplier: 12.5
+  aerialMultiplier: 0.125
+  stepHeight: 0.3
+  jumpForce: 25
   groundDrag: 3
   airDrag: 1
   Xvelocity: 0
   Yvelocity: 0
   Zvelocity: 0
-  platformVelocity: {x: 0, y: 0, z: 0}
-  feetPos: {x: 0, y: 0, z: 0}
-  feetFor: {x: 0, y: 0, z: 0}
 --- !u!114 &5005148957060438707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,6 +357,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 386dda14f13c1024d89d7f401b10d215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMovementSC: {fileID: 0}
+  staminaBar: {fileID: 0}
+  cooldownText: {fileID: 0}
 --- !u!1 &5005148957410178343
 GameObject:
   m_ObjectHideFlags: 0
