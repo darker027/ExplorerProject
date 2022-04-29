@@ -10,7 +10,8 @@ public class icePlatform : MonoBehaviour
     [SerializeField] private float shrinkingTime = 5.0f;
     private float smoothTime = 5.0f;
     private float velo = 0f;
-
+    private bool isDelay;
+    private float timer;
     private bool isStartCoroutine;
     private bool isFreeze;
     private bool isMelting;
@@ -21,6 +22,7 @@ public class icePlatform : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isDelay = false;
         shrinkingEffect(new Vector3(0, 0, 0), shrinkingTime);
     }
 
@@ -105,6 +107,17 @@ public class icePlatform : MonoBehaviour
     {
         if(trigEnter.CompareTag("Water"))
         {
+            //if (isDelay == false)
+            //{
+            //    timer = 0;
+            //}
+            //isDelay = true;
+            //while (timer < 1)
+            //{
+                
+            //    timer += Time.deltaTime;
+            //}
+            //isDelay = false;
             onWater = trigEnter.transform.GetComponent<WaterLogic>();
         }
         if(trigEnter.CompareTag("sunLight"))

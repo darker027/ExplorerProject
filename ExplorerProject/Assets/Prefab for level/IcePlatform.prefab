@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4208184817689819241}
   - component: {fileID: 7438578232685059358}
   - component: {fileID: 4909264289866512259}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: IcePlatform
   m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
@@ -129,5 +129,6 @@ MonoBehaviour:
   Freeze: {fileID: 2100000, guid: 4d224d8a956ab1d44b949cf9f7f89a51, type: 2}
   UnFreeze: {fileID: 2100000, guid: 3ab348ad8b9684f4a8fe8cad57cb5daf, type: 2}
   freezeTime: 5
+  shrinkingTime: 20
   onWater: {fileID: 0}
   flowSpeed: 1.25

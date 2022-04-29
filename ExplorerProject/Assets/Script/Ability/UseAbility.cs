@@ -57,7 +57,7 @@ public class UseAbility : MonoBehaviour
         readyToShoot = true;
         allowButtonHold = false;
         bulletSize = 0.0f;
-        haveIce = false;
+       // haveIce = false;
         isClickSwitch = false;
         //haveTorch = false;
         if (Instance != null && Instance != this)
@@ -150,6 +150,16 @@ public class UseAbility : MonoBehaviour
             }
 
         }
+        if (Input.GetKeyDown(KeyCode.Alpha1) && currElement != Element.currentElement.Fire)
+        {
+            currElement = Element.currentElement.Fire;
+            Debug.Log("Fire");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2) && currElement != Element.currentElement.Ice && haveIce == true)
+        {
+            Debug.Log("Ice");
+            currElement = Element.currentElement.Ice;
+        }
         //check if allowed to hold down button
         if (allowButtonHold)
         {
@@ -191,14 +201,7 @@ public class UseAbility : MonoBehaviour
             Shoot();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1) && currElement != Element.currentElement.Fire)
-        {
-            currElement = Element.currentElement.Fire;
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha2) && currElement != Element.currentElement.Ice && haveIce == true)
-        {
-            currElement = Element.currentElement.Ice;
-        }
+      
       /*  if (Input.GetKeyDown(KeyCode.Alpha3) && currElement != Element.currentElement.Electro)
         {
             currElement = Element.currentElement.Electro;
