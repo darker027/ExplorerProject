@@ -8,7 +8,7 @@ public class DeepPuddle : MonoBehaviour
     [SerializeField] private Material Freeze;
     [SerializeField] private Material UnFreeze;
     [SerializeField] private float freezeTime;
-    [SerializeField] private BoxCollider deepCollider;
+    //[SerializeField] private BoxCollider deepCollider;
     [SerializeField] private GameObject icePlatform;
     private bool isStartCoroutine;
     private bool IsFreeze;
@@ -52,8 +52,11 @@ public class DeepPuddle : MonoBehaviour
              IsFreeze = true;*/
             Destroy(other.gameObject);
             IsFreeze = true;
-            GameObject isntIce = Instantiate(icePlatform, new Vector3(other.transform.position.x, other.transform.position.y + 0.5f , other.transform.position.z), Quaternion.identity);
-            isntIce.GetComponent<icePlatform>().onWater = this.gameObject.GetComponent<WaterLogic>();
+            GameObject isntIce = Instantiate(icePlatform, new Vector3(other.transform.position.x, other.transform.position.y + 0.4f , other.transform.position.z), Quaternion.identity);
+            if (isntIce != null)
+            {
+                isntIce.GetComponent<icePlatform>().onWater = this.gameObject.GetComponent<WaterLogic>();
+            }
         }
     }
 
@@ -70,31 +73,31 @@ public class DeepPuddle : MonoBehaviour
         }
     }
    //old method for freeze water
-    void freezeBox()
-    {
-        if (IsFreeze)
-        {
-            freezeTime -= Time.deltaTime;
-            if (isStartCoroutine == false)
-            {
-                gameObject.GetComponent<Renderer>().material = Freeze;
-            }
+    //void freezeBox()
+    //{
+    //    if (IsFreeze)
+    //    {
+    //        freezeTime -= Time.deltaTime;
+    //        if (isStartCoroutine == false)
+    //        {
+    //            gameObject.GetComponent<Renderer>().material = Freeze;
+    //        }
 
-            if (freezeTime <= 2.0f && freezeTime > 0.0f && isStartCoroutine == false)
-            {
-                //  Debug.Log("in blink");
-                isStartCoroutine = true;
-                StartCoroutine(blink(2.0f));
-            }
-            else if (freezeTime <= 0)
-            {
-                deepCollider.enabled = !deepCollider.enabled;
-                IsFreeze = false;
-            }
-        }
-        else
-        {
-            gameObject.GetComponent<Renderer>().material = UnFreeze;
-        }
-    }
+    //        if (freezeTime <= 2.0f && freezeTime > 0.0f && isStartCoroutine == false)
+    //        {
+    //            //  Debug.Log("in blink");
+    //            isStartCoroutine = true;
+    //            StartCoroutine(blink(2.0f));
+    //        }
+    //        else if (freezeTime <= 0)
+    //        {
+    //            deepCollider.enabled = !deepCollider.enabled;
+    //            IsFreeze = false;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        gameObject.GetComponent<Renderer>().material = UnFreeze;
+    //    }
+    //}
 }

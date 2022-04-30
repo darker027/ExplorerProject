@@ -265,8 +265,10 @@ public class PlayerMovement : MonoBehaviour
         if(colEnter.gameObject.CompareTag("MovingPlatform"))
         {
             onMovingPlatform = true;
+
+            this.gameObject.transform.parent = colEnter.transform;
             //platformRigid = colEnter.gameObject.GetComponent<Rigidbody>();
-            gameObject.transform.parent = colEnter.transform;
+
         }
     }
 
