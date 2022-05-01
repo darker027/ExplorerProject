@@ -111,41 +111,24 @@ public class icePlatform : MonoBehaviour
 
     }
 
-    private void OnColliderEnter(Collider trigEnter)
+   
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if(trigEnter.CompareTag("Water"))
+        Debug.Log("enter");
+        if (collision.gameObject.CompareTag("Water"))
         {
-            //if (isDelay == false)
-            //{
-            //    timer = 0;
-            //}
-            //isDelay = true;
-            //while (timer < 1)
-            //{
-                
-            //    timer += Time.deltaTime;
-            //}
-            //isDelay = false;
-            onWater = trigEnter.transform.GetComponent<WaterLogic>();
-           
+
+            onWater = collision.transform.GetComponent<WaterLogic>();
+
         }
-        if(trigEnter.CompareTag("sunLight"))
+        if (collision.gameObject.CompareTag("sunLight"))
         {
             isMelting = true;
         }
     }
 
-    private void OnColliderStay(Collider trigStay)
-    {
-        Debug.Log("moving");
-        if (trigStay.CompareTag("Water"))
-        {
-
-            
-
-            
-        }
-    }
+ 
 
     private void Move()
     {

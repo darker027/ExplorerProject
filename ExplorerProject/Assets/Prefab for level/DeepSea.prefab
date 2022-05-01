@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1311836680427916530}
   - component: {fileID: 1311836680427916531}
   - component: {fileID: 3476746353430081648}
+  - component: {fileID: 778843339604725068}
   m_Layer: 6
   m_Name: DeepSea
   m_TagString: Water
@@ -112,7 +113,6 @@ MonoBehaviour:
   Freeze: {fileID: 2100000, guid: 4d224d8a956ab1d44b949cf9f7f89a51, type: 2}
   UnFreeze: {fileID: 2100000, guid: 3ab348ad8b9684f4a8fe8cad57cb5daf, type: 2}
   freezeTime: 5
-  deepCollider: {fileID: 0}
   icePlatform: {fileID: 4208184817689819238, guid: 8328dc324915f294086da7ed9e4d24d0, type: 3}
 --- !u!114 &3476746353430081648
 MonoBehaviour:
@@ -131,3 +131,19 @@ MonoBehaviour:
   checkFlowing: 0
   Test: 0
   waterValue: 0
+--- !u!54 &778843339604725068
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311836680427916528}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
