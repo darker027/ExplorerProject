@@ -195,10 +195,10 @@ public class PlayerMovement : MonoBehaviour
         {
             playerRigid.AddForce(slopeDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
         }
-        else if (onGrounded && onMovingPlatform)
-        {
-            playerRigid.velocity = new Vector3((playerRigid.velocity.x + platformRigid.velocity.x), playerRigid.velocity.y, (playerRigid.velocity.z + platformRigid.velocity.z));
-        }
+        //else if (onGrounded && onMovingPlatform)
+        //{
+        //    playerRigid.velocity = new Vector3((playerRigid.velocity.x + platformRigid.velocity.x), playerRigid.velocity.y, (playerRigid.velocity.z + platformRigid.velocity.z));
+        //}
         else if (!onGrounded)
         {
             playerRigid.AddForce(movementDirection.normalized * moveSpeed * movementMultiplier * aerialMultiplier, ForceMode.Acceleration);
@@ -264,8 +264,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(colEnter.gameObject.CompareTag("MovingPlatform"))
         {
-            onMovingPlatform = true;
-
+            //onMovingPlatform = true;
             this.gameObject.transform.parent = colEnter.transform;
             //platformRigid = colEnter.gameObject.GetComponent<Rigidbody>();
 
@@ -276,7 +275,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (colExit.gameObject.CompareTag("MovingPlatform"))
         {
-            onMovingPlatform = false;
+            //onMovingPlatform = false;
             //platformRigid = colEnter.gameObject.GetComponent<Rigidbody>();
             gameObject.transform.parent = null;
         }
