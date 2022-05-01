@@ -119,6 +119,7 @@ public class icePlatform : MonoBehaviour
             //}
             //isDelay = false;
             onWater = trigEnter.transform.GetComponent<WaterLogic>();
+           
         }
         if(trigEnter.CompareTag("sunLight"))
         {
