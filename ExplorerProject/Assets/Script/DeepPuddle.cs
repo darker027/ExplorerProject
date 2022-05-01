@@ -55,7 +55,7 @@ public class DeepPuddle : MonoBehaviour
             GameObject isntIce = Instantiate(icePlatform, new Vector3(other.transform.position.x, other.transform.position.y + 0.4f , other.transform.position.z), Quaternion.identity);
             if (isntIce != null)
             {
-                isntIce.GetComponent<icePlatform>().onWater = this.gameObject.GetComponent<WaterLogic>();
+                isntIce.GetComponentInChildren<icePlatform>().onWater = this.gameObject.GetComponent<WaterLogic>();
             }
         }
     }
