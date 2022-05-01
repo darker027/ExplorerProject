@@ -10,7 +10,7 @@ public class WaterLogic : MonoBehaviour
 
     [SerializeField] private GameObject waterPrefab;
 
-    private float checkDelay;
+    private float checkDelay = 1.0f;
 
     [SerializeField] private bool checkFlowing;
 

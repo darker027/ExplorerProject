@@ -20,7 +20,7 @@ public class LightPuzzle : MonoBehaviour
     {
         for (int i = 0; i < checkPoints.Length; i++)
         {
-            if (Physics.Raycast(checkPoints[i].position, Vector3.down, out RaycastHit hit))
+            if (Physics.Raycast(checkPoints[i].position, Vector3.down, out RaycastHit hit, float.MaxValue))
             {
                 if (hit.transform.TryGetComponent<WaterLogic>(out WaterLogic waterCheck))
                 {

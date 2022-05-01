@@ -112,7 +112,6 @@ MonoBehaviour:
   Freeze: {fileID: 2100000, guid: 4d224d8a956ab1d44b949cf9f7f89a51, type: 2}
   UnFreeze: {fileID: 2100000, guid: 3ab348ad8b9684f4a8fe8cad57cb5daf, type: 2}
   freezeTime: 5
-  deepCollider: {fileID: 0}
   icePlatform: {fileID: 4208184817689819238, guid: 8328dc324915f294086da7ed9e4d24d0, type: 3}
 --- !u!114 &3476746353430081648
 MonoBehaviour:
@@ -130,4 +129,4 @@ MonoBehaviour:
   waterPrefab: {fileID: 1311836680427916528}
   checkFlowing: 0
   Test: 0
-  waterValue: 0
+  waterValue: 1

@@ -36197,6 +36197,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2004560235, guid: 4471864b3942a884fa2cbf7e1351d7c2, type: 3}
+      propertyPath: checkPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 2057338304}
+    - target: {fileID: 2004560235, guid: 4471864b3942a884fa2cbf7e1351d7c2, type: 3}
+      propertyPath: checkPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 225847683}
     - target: {fileID: 6236967470065946128, guid: 4471864b3942a884fa2cbf7e1351d7c2, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -36244,10 +36252,6 @@ PrefabInstance:
     - target: {fileID: 6236967470065946348, guid: 4471864b3942a884fa2cbf7e1351d7c2, type: 3}
       propertyPath: m_Name
       value: upgradeLight
-      objectReference: {fileID: 0}
-    - target: {fileID: 6236967470065946348, guid: 4471864b3942a884fa2cbf7e1351d7c2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4471864b3942a884fa2cbf7e1351d7c2, type: 3}
@@ -39374,27 +39378,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003619342}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &2004560230 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6236967470065946348, guid: 4471864b3942a884fa2cbf7e1351d7c2, type: 3}
-  m_PrefabInstance: {fileID: 1856795081}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2004560235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2004560230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91cecfa2e66736141ba04416dff06ba6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  checkPoints:
-  - {fileID: 2057338304}
-  - {fileID: 225847683}
-  requireValue: 0100000002000000
 --- !u!1 &2017359824
 GameObject:
   m_ObjectHideFlags: 0
