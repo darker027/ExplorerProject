@@ -27,6 +27,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial Level/L06_TempleFinalRoom.unity
     guid: a9e684db980144f4aa02cdb1230ead8c
   - enabled: 1
+    path: Assets/Scenes/Tutorial Level/Rearranged Tutorial/Room1-2_Outdoor.unity
+    guid: dee13b1c3d9fa8f4888c15db1bf1acbd
+  - enabled: 1
+    path: Assets/Scenes/Tutorial Level/Rearranged Tutorial/Room4_Underground.unity
+    guid: 3f8becd7324c5f843bcde067fdf5e1fd
+  - enabled: 1
+    path: Assets/Scenes/Tutorial Level/Rearranged Tutorial/Room5_Library.unity
+    guid: cab12b03e9b22484da7a1448ae6fe29f
+  - enabled: 1
     path: Assets/Scenes/Tutorial Level/EndScene.unity
     guid: e038cd6b139365644935b5141064afe6
   m_configObjects: {}
