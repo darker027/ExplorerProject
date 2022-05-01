@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial Level/Rearranged Tutorial/Room1-2_Outdoor.unity
     guid: dee13b1c3d9fa8f4888c15db1bf1acbd
   - enabled: 1
+    path: Assets/Scenes/Tutorial Level/Rearranged Tutorial/Room3_Hall.unity
+    guid: 14bae56b35eb00e4682dd6291acf6d14
+  - enabled: 1
     path: Assets/Scenes/Tutorial Level/Rearranged Tutorial/Room4_Underground.unity
     guid: 3f8becd7324c5f843bcde067fdf5e1fd
   - enabled: 1
