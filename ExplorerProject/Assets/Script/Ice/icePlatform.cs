@@ -37,6 +37,14 @@ public class icePlatform : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        if(onWater != null)
+        {
+            Move();
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
         
     }
   
@@ -103,7 +111,7 @@ public class icePlatform : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider trigEnter)
+    private void OnColliderEnter(Collider trigEnter)
     {
         if(trigEnter.CompareTag("Water"))
         {
@@ -127,28 +135,35 @@ public class icePlatform : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider trigStay)
+    private void OnColliderStay(Collider trigStay)
     {
+        Debug.Log("moving");
         if (trigStay.CompareTag("Water"))
         {
-            if (onWater.flowDirection == WaterLogic.direction.Forward)
-            {
-                transform.position += transform.forward * flowSpeed * Time.deltaTime;
-            }
-            else if(onWater.flowDirection == WaterLogic.direction.Backward)
-            {
-                transform.position -= transform.forward * flowSpeed * Time.deltaTime;
-            }
-            else if(onWater.flowDirection == WaterLogic.direction.Right)
-            {
-                transform.position += transform.right * flowSpeed * Time.deltaTime;
-            }
-            else if(onWater.flowDirection == WaterLogic.direction.Left)
-            {
-                transform.position -= transform.right * flowSpeed * Time.deltaTime;
-            }
 
-           // Debug.Log("moving");
+            
+
+            
+        }
+    }
+
+    private void Move()
+    {
+        if (onWater.flowDirection == WaterLogic.direction.Forward)
+        {
+            transform.position += transform.forward * flowSpeed * Time.deltaTime;
+        }
+        else if (onWater.flowDirection == WaterLogic.direction.Backward)
+        {
+            transform.position -= transform.forward * flowSpeed * Time.deltaTime;
+        }
+        else if (onWater.flowDirection == WaterLogic.direction.Right)
+        {
+            transform.position += transform.right * flowSpeed * Time.deltaTime;
+        }
+        else if (onWater.flowDirection == WaterLogic.direction.Left)
+        {
+            transform.position -= transform.right * flowSpeed * Time.deltaTime;
         }
     }
 }

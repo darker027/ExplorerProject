@@ -43,16 +43,15 @@ public class DeepPuddle : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && IsFreeze == false)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+           SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         if (other.CompareTag("Ice") && IsFreeze == false)
         {
-            /* freezeTime = 5;
-             deepCollider.enabled = !deepCollider.enabled;
-             IsFreeze = true;*/
+            
             Destroy(other.gameObject);
             IsFreeze = true;
-            GameObject isntIce = Instantiate(icePlatform, new Vector3(other.transform.position.x, other.transform.position.y + 0.4f , other.transform.position.z), Quaternion.identity);
+            
+            GameObject isntIce = Instantiate(icePlatform, new Vector3(other.transform.position.x,this.transform.position.y + (this.transform.localScale.y/2), other.transform.position.z), Quaternion.identity);
             if (isntIce != null)
             {
                 isntIce.GetComponentInChildren<icePlatform>().onWater = this.gameObject.GetComponent<WaterLogic>();
