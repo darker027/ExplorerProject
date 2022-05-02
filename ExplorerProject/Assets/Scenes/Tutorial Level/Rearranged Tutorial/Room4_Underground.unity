@@ -2078,6 +2078,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5005148957060438707, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
+      propertyPath: haveIce
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6220366966327750420, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
       propertyPath: staminaBar
       value: 
@@ -5373,7 +5377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1095010349
 Transform:
   m_ObjectHideFlags: 0

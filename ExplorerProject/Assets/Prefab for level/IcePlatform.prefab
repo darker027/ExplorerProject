@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 3460929045026293206}
   - component: {fileID: 6750099528118798566}
   - component: {fileID: 507096604227927150}
+  - component: {fileID: 1212047081889381840}
   m_Layer: 7
   m_Name: IcePlatform
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +100,7 @@ MonoBehaviour:
   UnFreeze: {fileID: 2100000, guid: 3ab348ad8b9684f4a8fe8cad57cb5daf, type: 2}
   freezeTime: 5
   shrinkingTime: 60
-  onWater: {fileID: 0}
+  forceMulti: 200
   flowSpeed: 1.25
 --- !u!64 &507096604227927150
 MeshCollider:
@@ -115,6 +116,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1212047081889381840
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063645474281246720}
+  serializedVersion: 2
+  m_Mass: 1000
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1 &4208184817689819238
 GameObject:
   m_ObjectHideFlags: 0

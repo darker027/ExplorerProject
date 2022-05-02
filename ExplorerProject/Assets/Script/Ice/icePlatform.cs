@@ -15,10 +15,16 @@ public class icePlatform : MonoBehaviour
     private bool isStartCoroutine;
     private bool isFreeze;
     private bool isMelting;
+    private Rigidbody rigidbody;
+    [SerializeField] private float forceMulti; 
 
-    public WaterLogic onWater;
+    private WaterLogic _Onwater;
+    public WaterLogic onWater { get { return _Onwater; } set { _Onwater = value; Debug.Log("set water"); } }
     [Range(1, 100)] [SerializeField] private float flowSpeed;
-
+    private void Awake()
+    {
+        rigidbody = this.GetComponent<Rigidbody>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -34,14 +40,6 @@ public class icePlatform : MonoBehaviour
             shrinkingEffect(new Vector3(0, 0, 0), shrinkingTime);
         }
         if(transform.localScale == new Vector3(0, 0, 0))
-        {
-            Destroy(this.gameObject);
-        }
-        if(onWater != null)
-        {
-            Move();
-        }
-        else
         {
             Destroy(this.gameObject);
         }
@@ -111,59 +109,46 @@ public class icePlatform : MonoBehaviour
 
     }
 
-    private void OnColliderEnter(Collider trigEnter)
+   
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if(trigEnter.CompareTag("Water"))
+        Debug.Log("enter");
+        if (collision.gameObject.CompareTag("Water"))
         {
-            //if (isDelay == false)
-            //{
-            //    timer = 0;
-            //}
-            //isDelay = true;
-            //while (timer < 1)
-            //{
-                
-            //    timer += Time.deltaTime;
-            //}
-            //isDelay = false;
-            onWater = trigEnter.transform.GetComponent<WaterLogic>();
-           
+
+            onWater = collision.transform.GetComponent<WaterLogic>();
+
         }
-        if(trigEnter.CompareTag("sunLight"))
+        if (collision.gameObject.CompareTag("sunLight"))
         {
             isMelting = true;
         }
     }
 
-    private void OnColliderStay(Collider trigStay)
+    public void addForce(Vector3 force)
     {
-        Debug.Log("moving");
-        if (trigStay.CompareTag("Water"))
-        {
-
-            
-
-            
-        }
+        rigidbody.AddForce(force.normalized * forceMulti, ForceMode.Force);
     }
 
-    private void Move()
-    {
-        if (onWater.flowDirection == WaterLogic.direction.Forward)
-        {
-            transform.position += transform.forward * flowSpeed * Time.deltaTime;
-        }
-        else if (onWater.flowDirection == WaterLogic.direction.Backward)
-        {
-            transform.position -= transform.forward * flowSpeed * Time.deltaTime;
-        }
-        else if (onWater.flowDirection == WaterLogic.direction.Right)
-        {
-            transform.position += transform.right * flowSpeed * Time.deltaTime;
-        }
-        else if (onWater.flowDirection == WaterLogic.direction.Left)
-        {
-            transform.position -= transform.right * flowSpeed * Time.deltaTime;
-        }
-    }
+    //private void Move()
+    //{
+    //    Debug.Log("Move");
+    //    if (onWater.flowDirection == WaterLogic.direction.Forward)
+    //    {
+    //        transform.position -= Vector3.forward * flowSpeed * Time.deltaTime;
+    //    }
+    //    else if (onWater.flowDirection == WaterLogic.direction.Backward)
+    //    {
+    //        transform.position += Vector3.forward * flowSpeed * Time.deltaTime;
+    //    }
+    //    else if (onWater.flowDirection == WaterLogic.direction.Right)
+    //    {
+    //        transform.position -= Vector3.right * flowSpeed * Time.deltaTime;
+    //    }
+    //    else if (onWater.flowDirection == WaterLogic.direction.Left)
+    //    {
+    //        transform.position += Vector3.right * flowSpeed * Time.deltaTime;
+    //    }
+    //}
 }
