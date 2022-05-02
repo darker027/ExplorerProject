@@ -9105,6 +9105,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6220366966327750420, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
+      propertyPath: CameraBase
+      value: 
+      objectReference: {fileID: 1853513676}
+    - target: {fileID: 6220366966327750420, guid: ba51a5d691dcd524baa8ec76dac5890f, type: 3}
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 228911543}
@@ -33266,6 +33270,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847805121}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1853513676 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 504333095264831637, guid: 334b06ebdd2cc434d802f65eb80e4458, type: 3}
+  m_PrefabInstance: {fileID: 890767508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1857210397
 PrefabInstance:
   m_ObjectHideFlags: 0
