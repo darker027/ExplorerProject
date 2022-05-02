@@ -126,11 +126,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1c2740445126ca428d280d5a96cb8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterSerial: 0
   flowDirection: 0
+  blockState: 0
+  layertoblock:
+    serializedVersion: 2
+    m_Bits: 65
+  hitOBJ: {fileID: 0}
   waterPrefab: {fileID: 1311836680427916528}
-  checkFlowing: 0
-  Test: 0
   waterValue: 1
+  checkallow: 1
 --- !u!54 &2503601047334438266
 Rigidbody:
   m_ObjectHideFlags: 0

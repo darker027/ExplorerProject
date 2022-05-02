@@ -45,7 +45,7 @@ public class DeepPuddle : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && IsFreeze == false)
         {
-         //  SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+           SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         if (other.CompareTag("Ice") && IsFreeze == false)
         {
@@ -64,7 +64,7 @@ public class DeepPuddle : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(other.name);
+       
         
         if (other.CompareTag("MovingPlatform"))
         {

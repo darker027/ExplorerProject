@@ -4,289 +4,190 @@ using UnityEngine;
 
 public class WaterLogic : MonoBehaviour
 {
+    public int waterSerial;
     public enum direction { None, Forward, Backward, Left, Right };
 
     public direction flowDirection;
 
+    public enum BlockState { None, Forward, Backward, Left, Right, All };
+
+    [SerializeField] BlockState blockState;
+
+    [SerializeField] LayerMask layertoblock;
+
+    [SerializeField] GameObject hitOBJ;
+
     [SerializeField] private GameObject waterPrefab;
 
-    private float checkDelay = 1.0f;
-
-    [SerializeField] private bool checkFlowing;
-
-    private bool downBlocked;
-    private bool forwardBlocked;
-    private bool backwardBlocked;
-    private bool rightBlocked;
-    private bool leftBlocked;
-
-    [SerializeField] private bool Test;
-
     public int waterValue;
+    WaterLogic otherWater;
 
-    private WaterLogic otherWater;
+    [SerializeField] bool checkallow;
 
+    float Delay = -1f;
     // Start is called before the first frame update
     void Start()
     {
-
+        Raycheck();
+      
     }
 
-    void Update()
+    // Update is called once per frame
+
+
+    public IEnumerator DelayRayCheck()
     {
-        NormalMode();
+        Debug.Log("Help me");
+        yield return new WaitForSeconds(0.5f);
+        Raycheck();
+      
     }
-
+    public void startDelayRayCheck()
+    {
+        StartCoroutine(DelayRayCheck());
+    }
     IEnumerator WaterGenarating(GameObject waterReference, Vector3 waterPosition)
     {
         yield return new WaitForSeconds(0.5f);
-        GameObject waterSpawn = Instantiate(waterReference, waterPosition, Quaternion.identity, this.gameObject.transform.parent);
+        GameObject waterSpawn = Instantiate(waterReference, waterPosition, Quaternion.identity);
+        waterSpawn.GetComponent<WaterLogic>().waterSerial = waterSerial;
     }
 
-    private void NormalMode()
+    void Raycheck()
     {
-        if (!checkFlowing)
+        Debug.Log("yeahhhh");
+        if (!checkallow)
         {
-            if (!downBlocked && checkDelay <= 0)
+            return;
+        }
+
+        int count = 0;
+
+        // if (Delay <= 0)
+        //{
+        
+        if (Physics.Raycast(gameObject.transform.position, -transform.up, out RaycastHit downHit, 3f, layertoblock))
+        {
+            
+            if (Physics.Raycast(gameObject.transform.position, transform.forward, out RaycastHit forwardHit, 3f, layertoblock))
             {
-                // Checking flowing downward
-                if (Physics.Raycast(gameObject.transform.position, -transform.up, out RaycastHit downHit, 1.25f))
+                hitOBJ = forwardHit.transform.gameObject;
+                blockState = BlockState.Forward;
+                count += 1;
+                OBJcheck();
+            }
+            else
+            {
+                flowDirection = direction.Forward;
+                if (Delay < 0)
                 {
-                    // Checking flowing forward
-                    if (!forwardBlocked)
-                    {
-                        if (Physics.Raycast(gameObject.transform.position, transform.forward, out RaycastHit forwardHit, 2.5f))
-                        {
-                            if (forwardHit.transform.tag == "Water" || forwardHit.transform.tag == "Platform")
-                            {
-                                if (forwardHit.transform.tag == "Platform")
-                                {
-                                    forwardBlocked = true;
-                                }
+                    StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(0, 0, 5)));
 
-                                if (forwardHit.transform.parent != this.gameObject.transform.parent)
-                                {
-                                    if (forwardHit.transform.TryGetComponent<WaterLogic>(out WaterLogic forwardWater))
-                                    {
-                                        if (forwardWater.waterValue < waterValue + 1)
-                                        {
-                                            if (otherWater != forwardWater)
-                                            {
-                                                forwardWater.waterValue += 1;
-                                                otherWater = forwardWater;
-                                            }
-                                        }
-                                        else
-                                        {
-
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    if (forwardHit.transform.TryGetComponent<WaterLogic>(out WaterLogic forwardWater))
-                                    {
-                                        if (forwardWater.waterValue < waterValue)
-                                        {
-                                            forwardWater.waterValue = waterValue;
-                                        }
-                                        else
-                                        {
-
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(0, 0, 5)));
-                            flowDirection = direction.Forward;
-                            checkDelay = 1.0f;
-                        }
-                    }
-
-                    // Checking flowing backward
-                    if (!backwardBlocked)
-                    {
-                        if (Physics.Raycast(gameObject.transform.position, -transform.forward, out RaycastHit backwardHit, 2.5f))
-                        {
-                            if (backwardHit.transform.tag == "Water" || backwardHit.transform.tag == "Platform")
-                            {
-                                if (backwardHit.transform.tag == "Platform")
-                                {
-                                    backwardBlocked = true;
-                                }
-
-                                if (backwardHit.transform.parent != this.gameObject.transform.parent)
-                                {
-                                    if (backwardHit.transform.TryGetComponent<WaterLogic>(out WaterLogic backwardWater))
-                                    {
-                                        if (backwardWater.waterValue < waterValue + 1)
-                                        {
-                                            if (otherWater != backwardWater)
-                                            {
-                                                backwardWater.waterValue += 1;
-                                                otherWater = backwardWater;
-                                            }
-                                        }
-                                        else
-                                        {
-
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    if (backwardHit.transform.TryGetComponent<WaterLogic>(out WaterLogic backwardWater))
-                                    {
-                                        if (backwardWater.waterValue < waterValue)
-                                        {
-                                            backwardWater.waterValue = waterValue;
-                                        }
-                                        else
-                                        {
-
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(0, 0, -5)));
-                            flowDirection = direction.Backward;
-                            checkDelay = 1.0f;
-                        }
-                    }
-
-                    // Checking flowing right
-                    if (!rightBlocked)
-                    {
-                        if (Physics.Raycast(gameObject.transform.position, transform.right, out RaycastHit rightHit, 2.5f))
-                        {
-                            if (rightHit.transform.tag == "Water" || rightHit.transform.tag == "Platform")
-                            {
-                                if (rightHit.transform.tag == "Platform")
-                                {
-                                    rightBlocked = true;
-                                }
-
-                                if (rightHit.transform.parent != this.gameObject.transform.parent)
-                                {
-                                    if (rightHit.transform.TryGetComponent<WaterLogic>(out WaterLogic rightWater))
-                                    {
-                                        if (rightWater.waterValue < waterValue + 1)
-                                        {
-                                            if (otherWater != rightWater)
-                                            {
-                                                rightWater.waterValue += 1;
-                                                otherWater = rightWater;
-                                            }
-                                        }
-                                        else
-                                        {
-
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    if (rightHit.transform.TryGetComponent<WaterLogic>(out WaterLogic rightWater))
-                                    {
-                                        if (rightWater.waterValue < waterValue)
-                                        {
-                                            rightWater.waterValue = waterValue;
-                                        }
-                                        else
-                                        {
-
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(5, 0, 0)));
-                            flowDirection = direction.Right;
-                            checkDelay = 1.0f;
-                        }
-                    }
-
-                    // Checking flowing left
-                    if (!leftBlocked)
-                    {
-                        if (Physics.Raycast(gameObject.transform.position, -transform.right, out RaycastHit leftHit, 2.5f))
-                        {
-                            if (leftHit.transform.tag == "Water" || leftHit.transform.tag == "Platform")
-                            {
-                                if (leftHit.transform.tag == "Platform")
-                                {
-                                    leftBlocked = true;
-                                }
-
-                                if (leftHit.transform.parent != this.gameObject.transform.parent)
-                                {
-                                    if (leftHit.transform.TryGetComponent<WaterLogic>(out WaterLogic leftWater))
-                                    {
-                                        if (leftWater.waterValue < waterValue + 1)
-                                        {
-                                            if (otherWater != leftWater)
-                                            {
-                                                leftWater.waterValue += 1;
-                                                otherWater = leftWater;
-                                            }
-                                        }
-                                        else
-                                        {
-
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    if (leftHit.transform.TryGetComponent<WaterLogic>(out WaterLogic leftWater))
-                                    {
-                                        if (leftWater.waterValue < waterValue)
-                                        {
-                                            leftWater.waterValue = waterValue;
-                                        }
-                                        else
-                                        {
-
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(-5, 0, 0)));
-                            flowDirection = direction.Left;
-                            checkDelay = 1.0f;
-                        }
-                    }
-
-                    if (forwardBlocked && backwardBlocked && rightBlocked && leftBlocked)
-                    {
-                        downBlocked = true;
-                        return;
-                    }
                 }
-                else
+            }
+
+            if (Physics.Raycast(gameObject.transform.position, -transform.forward, out RaycastHit backwardHit, 3f, layertoblock))
+            {
+                hitOBJ = backwardHit.transform.gameObject;
+                blockState = BlockState.Backward;
+                count += 1;
+                OBJcheck();
+            }
+            else
+            {
+                flowDirection = direction.Backward;
+                if (Delay < 0)
                 {
-                    StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(0, -2.5f, 0)));
-                    flowDirection = direction.None;
-                    downBlocked = true;
-                    checkDelay = 1.0f;
-                    return;
+                    StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(0, 0, -5)));
+
+                }
+            }
+            if (Physics.Raycast(gameObject.transform.position, transform.right, out RaycastHit rightHit, 3f, layertoblock))
+            {
+                hitOBJ = rightHit.transform.gameObject;
+                blockState = BlockState.Right;
+                count += 1;
+                OBJcheck();
+            }
+            else
+            {
+                flowDirection = direction.Right;
+                if (Delay < 0)
+                {
+                    StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(5, 0, 0)));
+
+                }
+
+              
+            }
+            
+            if (Physics.Raycast(gameObject.transform.position, -transform.right, out RaycastHit leftHit, 3f, layertoblock))
+            {
+                
+                hitOBJ = leftHit.transform.gameObject;
+                blockState = BlockState.Left;
+                count += 1;
+                OBJcheck();
+            }
+            else
+            {
+                flowDirection = direction.Left;
+                if (Delay < 0)
+                {
+                    StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(-5, 0, 0)));
+
+                }
+            }
+        }
+        else
+        {
+            StartCoroutine(WaterGenarating(waterPrefab, transform.position + new Vector3(0, -3f, 0)));
+            flowDirection = direction.None;
+            
+        }
+            //}
+            //else
+            //{
+            //  //  Delay -= Time.deltaTime;
+            //}
+
+            if (count == 4)
+            {
+                blockState = BlockState.All;
+            }
+        }
+
+        void OBJcheck()
+        {
+            if (hitOBJ != null)
+            {
+                if (hitOBJ.tag == "Water")
+                {
+                    if (hitOBJ.GetComponent<WaterLogic>())
+                    {
+                        WaterLogic watertocompare = hitOBJ.GetComponent<WaterLogic>();
+                        if (waterSerial != watertocompare.waterSerial)
+                        {
+                            if ((watertocompare.waterValue < waterValue + 1) && (otherWater != watertocompare))
+                            {
+                                watertocompare.waterValue += 1;
+                                otherWater = watertocompare;
+                            }
+                        }
+                        else
+                        {
+                            if (watertocompare.waterValue < waterValue)
+                            {
+                                watertocompare.waterValue = waterValue;
+                            }
+                        }
+                    }
                 }
             }
             else
             {
-                checkDelay -= Time.deltaTime;
+                blockState = BlockState.None;
             }
         }
     }
-}
+

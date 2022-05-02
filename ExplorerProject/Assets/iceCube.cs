@@ -6,7 +6,7 @@ public class iceCube : MonoBehaviour
 {
     [SerializeField] private float meltTime;
     private bool isMelt;
-
+    [SerializeField] LayerMask layertoblock;
     [SerializeField] [Range(0.0f, 1.0f)] private float lerpTime;
     [SerializeField] Color meltColor;
 
@@ -27,6 +27,8 @@ public class iceCube : MonoBehaviour
         }
         if(meltTime <= 0.0f)
         {
+            
+            shootRay();
             Destroy(this.gameObject);
         }
     }
@@ -42,4 +44,61 @@ public class iceCube : MonoBehaviour
         isMelt = false;
     }
 
+    void shootRay()
+    {
+
+
+        if (Physics.Raycast(gameObject.transform.position, transform.forward, out RaycastHit forwardHit, 3f, layertoblock))
+        {
+            WaterLogic waterLogic;
+            if ((waterLogic = forwardHit.collider.GetComponent<WaterLogic>()) != null)
+            {
+                Debug.Log("na heee1");
+                waterLogic.startDelayRayCheck();
+                return;
+            }
+            
+        }
+
+
+        if (Physics.Raycast(gameObject.transform.position, -transform.forward, out RaycastHit backwardHit, 3f, layertoblock))
+        {
+            WaterLogic waterLogic;
+            if ((waterLogic = backwardHit.collider.GetComponent<WaterLogic>()) != null)
+            {
+                Debug.Log("na heee2");
+                waterLogic.startDelayRayCheck();
+                return;
+            }
+        }
+
+
+        if (Physics.Raycast(gameObject.transform.position, transform.right, out RaycastHit rightHit, 3f, layertoblock))
+        {
+            WaterLogic waterLogic;
+            if ((waterLogic = rightHit.collider.GetComponent<WaterLogic>()) != null)
+            {
+                Debug.Log("na heee3");
+                waterLogic.startDelayRayCheck();
+                return;
+            }
+        }
+
+
+
+        if (Physics.Raycast(gameObject.transform.position, -transform.right, out RaycastHit leftHit, 3f, layertoblock))
+        {
+            WaterLogic waterLogic;
+            if ((waterLogic = leftHit.collider.GetComponent<WaterLogic>()) != null)
+            {
+                Debug.Log("na heee4");
+                waterLogic.startDelayRayCheck();
+                return;
+            }
+        }
+
+
+    }
 }
+
+
