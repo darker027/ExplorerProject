@@ -12,12 +12,14 @@ public class DeepPuddle : MonoBehaviour
     [SerializeField] private GameObject icePlatform;
     private bool isStartCoroutine;
     private bool IsFreeze;
+    private WaterLogic waterLogic;
 
     void Start()
     {
         gameObject.GetComponent<Renderer>().material = UnFreeze;
         IsFreeze = false;
         isStartCoroutine = false;
+        waterLogic = GetComponent<WaterLogic>();
      
     }
 
@@ -43,7 +45,7 @@ public class DeepPuddle : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && IsFreeze == false)
         {
-           SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+         //  SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         if (other.CompareTag("Ice") && IsFreeze == false)
         {
@@ -52,12 +54,40 @@ public class DeepPuddle : MonoBehaviour
             IsFreeze = true;
             
             GameObject isntIce = Instantiate(icePlatform, new Vector3(other.transform.position.x,this.transform.position.y + (this.transform.localScale.y/2), other.transform.position.z), Quaternion.identity);
+            isntIce.GetComponentInChildren<icePlatform>().addForce(Vector3.forward);
             if (isntIce != null)
             {
                 isntIce.GetComponentInChildren<icePlatform>().onWater = this.gameObject.GetComponent<WaterLogic>();
             }
         }
+        
     }
+    private void OnTriggerStay(Collider other)
+    {
+        Debug.Log(other.name);
+        
+        if (other.CompareTag("MovingPlatform"))
+        {
+            
+            if (waterLogic.flowDirection == WaterLogic.direction.Forward)
+            {
+                other.GetComponent<icePlatform>().addForce(Vector3.back);
+            }
+            else if (waterLogic.flowDirection == WaterLogic.direction.Backward)
+            {
+                other.GetComponent<icePlatform>().addForce(Vector3.forward);
+            }
+            else if (waterLogic.flowDirection == WaterLogic.direction.Right)
+            {
+                other.GetComponent<icePlatform>().addForce(Vector3.left);
+            }
+            else if (waterLogic.flowDirection == WaterLogic.direction.Left)
+            {
+                other.GetComponent<icePlatform>().addForce(Vector3.right);
+            }
+        }
+    }
+  
 
     void platform()
     {
