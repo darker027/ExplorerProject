@@ -18,7 +18,6 @@ public class WaterLogic : MonoBehaviour
     [SerializeField] GameObject hitOBJ;
 
     [SerializeField] private GameObject waterPrefab;
-
     public int waterValue;
     WaterLogic otherWater;
 
@@ -29,12 +28,18 @@ public class WaterLogic : MonoBehaviour
     void Start()
     {
         Raycheck();
-      
+        StartCoroutine(CheckValue());
     }
 
     // Update is called once per frame
 
-
+    IEnumerator CheckValue()
+    {
+        int _instance = waterValue;
+        yield return new WaitUntil(() => waterValue != _instance);
+        Raycheck();
+        StartCoroutine(CheckValue());
+    }
     public IEnumerator DelayRayCheck()
     {
         Debug.Log("Help me");
@@ -55,7 +60,7 @@ public class WaterLogic : MonoBehaviour
 
     void Raycheck()
     {
-        Debug.Log("yeahhhh");
+        
         if (!checkallow)
         {
             return;
@@ -166,13 +171,17 @@ public class WaterLogic : MonoBehaviour
                     if (hitOBJ.GetComponent<WaterLogic>())
                     {
                         WaterLogic watertocompare = hitOBJ.GetComponent<WaterLogic>();
+                        
                         if (waterSerial != watertocompare.waterSerial)
                         {
                             if ((watertocompare.waterValue < waterValue + 1) && (otherWater != watertocompare))
                             {
+                                
                                 watertocompare.waterValue += 1;
+                                
                                 otherWater = watertocompare;
-                            }
+                                Debug.Log("Add value" + watertocompare.waterValue);
+                        }
                         }
                         else
                         {

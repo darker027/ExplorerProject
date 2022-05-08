@@ -12,6 +12,10 @@ public class PickableController : MonoBehaviour
 
     public bool Pickup()
     {
+        if(_rootTransform == null)
+        {
+            return false;
+        }
         IPickable pickable = PickableManager.Instance.AttemptPickup(_rootTransform);
 
         if (pickable == null) return false;
