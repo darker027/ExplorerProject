@@ -176,12 +176,10 @@ public class WaterLogic : MonoBehaviour
                         {
                             if ((watertocompare.waterValue < waterValue + 1) && (otherWater != watertocompare))
                             {
-                                
                                 watertocompare.waterValue += 1;
-                                
                                 otherWater = watertocompare;
-                                Debug.Log("Add value" + watertocompare.waterValue);
-                        }
+                               
+                            }
                         }
                         else
                         {
