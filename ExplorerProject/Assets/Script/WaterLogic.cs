@@ -8,9 +8,9 @@ public class WaterLogic : MonoBehaviour
     public enum direction { None, Forward, Backward, Left, Right };
 
     public direction flowDirection;
-
+    
     public enum BlockState { None, Forward, Backward, Left, Right, All };
-
+    public bool othercheck = false;
     [SerializeField] BlockState blockState;
 
     [SerializeField] LayerMask layertoblock;
@@ -27,6 +27,8 @@ public class WaterLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        Time.timeScale = 2;
         Raycheck();
         StartCoroutine(CheckValue());
     }
@@ -42,7 +44,7 @@ public class WaterLogic : MonoBehaviour
     }
     public IEnumerator DelayRayCheck()
     {
-        Debug.Log("Help me");
+        
         yield return new WaitForSeconds(0.5f);
         Raycheck();
       
@@ -174,10 +176,16 @@ public class WaterLogic : MonoBehaviour
                         
                         if (waterSerial != watertocompare.waterSerial)
                         {
-                            if ((watertocompare.waterValue < waterValue + 1) && (otherWater != watertocompare))
+                            if (otherWater != watertocompare)
                             {
-                                watertocompare.waterValue += 1;
+                              
+                               if(othercheck == true) { othercheck = false; return; }
+                                int result = answerManager.waterArr[waterSerial] + answerManager.waterArr[watertocompare.waterSerial];
+                                answerManager.waterArr[waterSerial] = waterValue = result;
+                                answerManager.waterArr[watertocompare.waterSerial] = watertocompare.waterValue = result;
                                 otherWater = watertocompare;
+                                otherWater.othercheck = true;
+                                answerManager.addWaterList(waterSerial, otherWater.waterSerial, result);
                                
                             }
                         }

@@ -25,7 +25,7 @@ public class LightPuzzle : MonoBehaviour
                 if (hit.transform.TryGetComponent<WaterLogic>(out WaterLogic waterCheck))
                 {
                     checkPoints[i].GetComponentInChildren<TMPro.TextMeshProUGUI>().enabled = true;
-                    checkPoints[i].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = waterCheck.waterValue.ToString();
+                    checkPoints[i].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = answerManager.waterArr[waterCheck.waterSerial].ToString();
 
                     if (waterCheck.waterValue >= requireValue[i])
                     {
