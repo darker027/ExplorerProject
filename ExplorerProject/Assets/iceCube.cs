@@ -78,7 +78,7 @@ public class iceCube : MonoBehaviour
             WaterLogic waterLogic;
             if ((waterLogic = rightHit.collider.GetComponent<WaterLogic>()) != null)
             {
-                Debug.Log("na heee3");
+                
                 waterLogic.startDelayRayCheck();
                 return;
             }
