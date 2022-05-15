@@ -4588,7 +4588,7 @@ PrefabInstance:
     - target: {fileID: 6803399551199813844, guid: ea51a83bc318fc84b8a7020acdce82b5, type: 3}
       propertyPath: transitionAnim
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 589458597}
     - target: {fileID: 6803399551199813845, guid: ea51a83bc318fc84b8a7020acdce82b5, type: 3}
       propertyPath: m_Name
       value: Portal
