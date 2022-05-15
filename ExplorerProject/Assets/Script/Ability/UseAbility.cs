@@ -77,6 +77,7 @@ public class UseAbility : MonoBehaviour
        }
         spawnPoint = GameObject.FindWithTag("Respawn").transform;
         this.transform.position = spawnPoint.position;
+      
 
     }
 
@@ -98,7 +99,11 @@ public class UseAbility : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isClickSwitch == true)
+        if (SceneManager.GetActiveScene().name == "EndScene")
+        {
+            Destroy(this.gameObject);
+        }
+        if (isClickSwitch == true)
         {
             return;
         }
