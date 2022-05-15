@@ -103,6 +103,11 @@ public class UseAbility : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        //reload scene
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
         if (isClickSwitch == true)
         {
             return;
